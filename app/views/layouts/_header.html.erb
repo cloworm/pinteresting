@@ -1,53 +1,55 @@
   <nav>
-    <div class="nav-wrapper">
-      <a href="#!" class="brand-logo">Fab Lab Hub</a>
-      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down">
-        <li>
-          <%= link_to root_path do %>
-            <i class="material-icons left">home</i> Home
-          <% end %>
-        </li>
-        <li>
-          <%= link_to projects_path do %>
-            <i class="material-icons left">library_books</i> Projects
-          <% end %>
-        </li>
-        <li>
-          <a class="dropdown-button" href="#" data-activates="fablabs"><i class="material-icons left">public</i> Fab Labs</a>
-          <!-- Dropdown Structure -->
-          <ul id="fablabs" class="dropdown-content">
-            <li><a href="#!">Bristol</a></li>
-            <li><a href="#!">Suwa</a></li>
-            <li><a href="#!">Wayne</a></li>
-            <li><a href="#!">Willich</a></li>
-          </ul>
-        </li>
-      </ul>
-      <ul class="side-nav" id="mobile-demo">
-        <li>
-          <%= link_to root_path do %>
-            <i class="material-icons left">home</i> Home
-          <% end %>
-        </li>
-        <li>
-          <%= link_to projects_path do %>
-            <i class="material-icons left">library_books</i> Projects
-          <% end %>
-        </li>
-        <li class="no-padding"><ul class="collapsible collapsible-accordion">
+    <div class="container">
+      <div class="nav-wrapper">
+        <%= link_to "Fab Lab Hub", root_path, class: "navbar-brand" %>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
           <li>
-            <a class="collapsible-header"><i class="material-icons left">public</i> Fab Labs</a>
-            <div class="collapsible-body">
-              <ul>
-                <li><a href="#!">Bristol</a></li>
-                <li><a href="#!">Suwa</a></li>
-                <li><a href="#!">Wayne</a></li>
-                <li><a href="#!">Willich</a></li>
-              </ul>
-            </div>
+            <%= link_to root_path do %>
+              <i class="material-icons left">home</i> Home
+            <% end %>
           </li>
-        </ul></li>
-      </ul>
-    </div>
+          <li>
+            <%= link_to projects_path do %>
+              <i class="material-icons left">library_books</i> Projects
+            <% end %>
+          </li>
+          <li>
+            <a class="dropdown-button" href="#" data-activates="fablabs"><i class="material-icons left">public</i> Fab Labs</a>
+            <!-- Dropdown Structure -->
+            <ul id="fablabs" class="dropdown-content">
+              <li><a href="#!">Bristol</a></li>
+              <li><a href="#!">Suwa</a></li>
+              <li><a href="#!">Wayne</a></li>
+              <li><a href="#!">Willich</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+          <li>
+            <%= link_to root_path do %>
+              <i class="material-icons left">home</i> Home
+            <% end %>
+          </li>
+          <li>
+            <%= link_to projects_path do %>
+              <i class="material-icons left">library_books</i> Projects
+            <% end %>
+          </li>
+          <li class="no-padding"><ul class="collapsible collapsible-accordion">
+            <li>
+              <a class="collapsible-header"><i class="material-icons left">public</i> Fab Labs</a>
+              <div class="collapsible-body">
+                <ul>
+                  <li><a href="#!">Bristol</a></li>
+                  <li><a href="#!">Suwa</a></li>
+                  <li><a href="#!">Wayne</a></li>
+                  <li><a href="#!">Willich</a></li>
+                </ul>
+              </div>
+            </li>
+          </ul></li>
+        </ul>
+      </div>
+    </div><!-- container -->
   </nav>
