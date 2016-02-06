@@ -3,8 +3,6 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass', '~> 3.4.21'
 gem 'sass-rails', '~> 5.0.4'
@@ -41,3 +39,14 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
 gem 'materialize-sass'
 # Materialize for Ruby
+
+group :development, :test do
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3'
+end
+
+#different gems needed for Heroku
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
