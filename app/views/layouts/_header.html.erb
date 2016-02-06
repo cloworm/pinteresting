@@ -24,6 +24,11 @@
               <li><a href="#!">Willich</a></li>
             </ul>
           </li>
+          <% if user_signed_in? %>
+            <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to "Sign In", new_user_session_path %></li>
+          <% end %>
         </ul>
         <ul class="side-nav" id="mobile-demo">
           <li>
@@ -48,6 +53,11 @@
                 </ul>
               </div>
             </li>
+            <% if user_signed_in? %>
+              <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+            <% else %>
+              <li><%= link_to "Sign In", new_user_session_path %></li>
+            <% end %>
           </ul></li>
         </ul>
       </div>
