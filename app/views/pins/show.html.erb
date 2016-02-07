@@ -15,8 +15,8 @@
         <% end %>
       <% end %>
 
-      <% @pin.activities.each do |activity| %>
-        <% if activity.type == "comment" %>
+      <% @pin.activities.includes(:user).each do |activity| %>
+        <% if activity.comment? %>
           <p>
             <%= activity.user.name %>: <%= activity.body %>
           </p>

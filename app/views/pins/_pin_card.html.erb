@@ -14,5 +14,8 @@
         <% end %>
       </div>
     <% end %>
+
+    <%= pin.activities.select{|a| a.like?}.count %>
+
   </div>
 </div>
