@@ -42,6 +42,10 @@ gem 'materialize-sass'
 # Materialize for Ruby
 
 gem 'paperclip', '~> 4.3.4'
+#Paperclip for image processing
+
+gem 'aws-sdk', '< 2.2.14 '
+#Amazon web services to store photos and files
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
