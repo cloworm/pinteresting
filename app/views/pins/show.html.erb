@@ -14,6 +14,20 @@
           <i class="material-icons">create</i> Edit
         <% end %>
       <% end %>
+
+      <% @pin.activities.each do |activity| %>
+        <% if activity.type == "comment" %>
+          <p>
+            <%= activity.user.name %>: <%= activity.body %>
+          </p>
+        <% else %>
+          <p>
+            <%= activity.user.name %> liked this.
+          </p>
+        <% end %>
+      <% end %>
+
+
     </div>
   </div>
 </div>
