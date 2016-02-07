@@ -3,11 +3,11 @@
 
   <% if current_user.likes_pin?(pin) %>
     <%= link_to pin_unlike_path(pin), method: :post, :remote => true do %>
-      Unlike
+      <i class="material-icons">favorite</i>
     <% end %>
   <% else %>
     <%= link_to pin_like_path(pin), method: :post, :remote => true do %>
-      Like
+      <i class="material-icons">favorite_border</i>
     <% end %>
   <% end %>
 </div>
