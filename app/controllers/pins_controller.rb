@@ -46,13 +46,19 @@ class PinsController < ApplicationController
       :type => "like"
     )
 
-    #TODO: prevent same user from liking things multiple times
+    # TODO: prevent same user from liking things multiple times
+    @activity.save
 
-    if @activity.save
-      render json: @activity, status: :created
-    else
-      render json: @activity.errors, status: :unprocessable_entity
+    respond_to do |format|
+      format.js
     end
+
+    # TODO: handle errors.
+    # if @activity.save
+    #   render json: @activity, status: :created
+    # else
+    #   render json: @activity.errors, status: :unprocessable_entity
+    # end
   end
 
   def unlike
@@ -61,7 +67,9 @@ class PinsController < ApplicationController
       :type => "like"
     ).delete_all
 
-    render nothing: true, status: :success
+    respond_to do |format|
+      format.js
+    end
   end
 
   private

@@ -1,11 +1,13 @@
-<%= pin.activities.select{|a| a.like?}.count %>
+<div class="like-button-container" data-pin-id="<%= pin.id %>">
+  <%= pin.activities.select{|a| a.like?}.count %>
 
-<% if current_user.likes_pin?(pin) %>
-  <%= link_to pin_unlike_path(pin), method: :post, :remote => true do %>
-    Unlike
+  <% if current_user.likes_pin?(pin) %>
+    <%= link_to pin_unlike_path(pin), method: :post, :remote => true do %>
+      Unlike
+    <% end %>
+  <% else %>
+    <%= link_to pin_like_path(pin), method: :post, :remote => true do %>
+      Like
+    <% end %>
   <% end %>
-<% else %>
-  <%= link_to pin_like_path(pin), method: :post, :remote => true do %>
-    Like
-  <% end %>
-<% end %>
+</div>
