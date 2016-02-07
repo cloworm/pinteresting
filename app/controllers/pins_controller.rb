@@ -1,13 +1,14 @@
 class PinsController < ApplicationController
-  before_action :set_pin, only: [:show, :edit, :update, :destroy]
+  before_action :set_pin, only: [:show, :edit, :update, :destroy, :like, :unlike]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @pins = Pin.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+    @pins = Pin.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10).includes(:activities)
   end
 
   def show
+
   end
 
   def new
@@ -39,10 +40,42 @@ class PinsController < ApplicationController
     redirect_to pins_url
   end
 
+  def like
+    @activity = @pin.activities.build(
+      :user_id => current_user.id,
+      :type => "like"
+    )
+
+    # TODO: prevent same user from liking things multiple times
+    @activity.save
+
+    respond_to do |format|
+      format.js
+    end
+
+    # TODO: handle errors.
+    # if @activity.save
+    #   render json: @activity, status: :created
+    # else
+    #   render json: @activity.errors, status: :unprocessable_entity
+    # end
+  end
+
+  def unlike
+    @pin.activities.where(
+      :user_id => current_user.id,
+      :type => "like"
+    ).delete_all
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_pin
-      @pin = Pin.find_by(id: params[:id])
+      @pin = Pin.find_by(id: params[:pin_id] || params[:id])
     end
 
     def correct_user

@@ -14,6 +14,33 @@
           <i class="material-icons">create</i> Edit
         <% end %>
       <% end %>
+
+      <%= form_for [@pin, @pin.activities.build] do |f| %>
+
+        <div class="input-field">
+          <%= f.text_field :body, placeholder:"Type your comments here!", class: "materialize-textarea" %>
+        </div>
+
+        <div class="actions">
+          <%= f.hidden_field :type, value: "comment" %>
+          <%= f.submit class: "btn" %>
+        </div>
+      <% end %>
+
+      <% @pin.activities.includes(:user).order("created_at DESC").each do |activity| %>
+        <% if activity.comment? %>
+          <p>
+            <%= activity.user.name %>: <%= activity.body %> [<%= activity.created_at.to_formatted_s(:long) %>]
+          </p>
+        <% else %>
+          <p>
+            <%= activity.user.name %> liked this. [<%= activity.created_at.to_formatted_s(:long) %>]
+          </p>
+        <% end %>
+      <% end %>
+
+      <%= render 'like_button', pin: pin %>
+
     </div>
   </div>
 </div>
