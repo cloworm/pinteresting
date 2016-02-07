@@ -6,4 +6,8 @@ class Pin < ActiveRecord::Base
     :s3_protocol => Rails.env.production? ? :https : :http
 
   validates_attachment :image, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
+
+  validates :image, presence: true
+  validates :description, presence: true
+
 end

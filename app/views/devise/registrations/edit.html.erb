@@ -8,6 +8,10 @@
             <%= devise_error_messages! %>
 
             <div class="input-field">
+              <%= f.text_field :name, autofocus: true, class: "validate", placeholder: "Name" %>
+            </div>
+
+            <div class="input-field">
               <%= f.email_field :email, autofocus: true, class: "validate", placeholder: "E-mail" %>
             </div>
 
