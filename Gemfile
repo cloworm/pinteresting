@@ -41,6 +41,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 gem 'materialize-sass'
 # Materialize for Ruby
 
+gem 'paperclip', '~> 4.3.4'
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'

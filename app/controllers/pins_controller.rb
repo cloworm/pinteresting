@@ -1,21 +1,17 @@
 class PinsController < ApplicationController
   before_action :set_pin, only: [:show, :edit, :update, :destroy]
-  before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
-  respond_to :html
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
     @pins = Pin.all
-    respond_with(@pins)
   end
 
   def show
-    respond_with(@pin)
   end
 
   def new
     @pin = current_user.pins.build
-    respond_with(@pin)
   end
 
   def edit
@@ -40,12 +36,13 @@ class PinsController < ApplicationController
 
   def destroy
     @pin.destroy
-    respond_with(@pin)
+    redirect_to pins_url
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
     def set_pin
-      @pin = Pin.find(params[:id])
+      @pin = Pin.find_by(id: params[:id])
     end
 
     def correct_user
@@ -53,7 +50,8 @@ class PinsController < ApplicationController
       redirect_to pins_path, notice: "Not authorized to edit this pin" if @pin.nil?
     end
 
+    # Never trust parameters from the scary internet, only allow the white list through.
     def pin_params
-      params.require(:pin).permit(:description)
+      params.require(:pin).permit(:description, :image)
     end
 end
