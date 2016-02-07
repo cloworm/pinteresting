@@ -17,3 +17,5 @@
 
 # Ignoring Vagrant Files
 .vagrant/*
+
+public/system

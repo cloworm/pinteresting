@@ -44,7 +44,7 @@ gem 'materialize-sass'
 gem 'paperclip', '~> 4.3.4'
 #Paperclip for image processing
 
-gem 'aws-sdk', '< 2.2.14 '
+gem 'aws-sdk', '< 2.0'
 #Amazon web services to store photos and files
 
 group :development, :test do
