@@ -60,6 +60,11 @@ group :development, :test do
   gem 'sqlite3'
 end
 
+group :development do
+  gem 'better_errors'
+  gem "binding_of_caller"
+end
+
 #different gems needed for Heroku
 group :production do
   gem 'pg'

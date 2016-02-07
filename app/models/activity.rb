@@ -5,6 +5,8 @@ class Activity < ActiveRecord::Base
   belongs_to :pin
   belongs_to :user
 
+  validates :body, presence: true, if: :comment?
+
   def comment?
     type == "comment"
   end
