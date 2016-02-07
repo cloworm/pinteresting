@@ -51,6 +51,10 @@ gem 'aws-sdk', '< 2.0'
 gem 'masonry-rails', '~> 0.2.4'
 #Tiled images
 
+gem 'will_paginate', '~> 3.0.6'
+
+gem 'will_paginate-materialize', '~> 0.1.0'
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
