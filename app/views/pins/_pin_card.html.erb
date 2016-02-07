@@ -15,7 +15,6 @@
       </div>
     <% end %>
 
-    <%= pin.activities.select{|a| a.like?}.count %>
-
+    <%= render 'like_button', pin: pin %>
   </div>
 </div>

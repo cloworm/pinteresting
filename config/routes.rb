@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :pins do
     resources :activities, except: :show
+    post "like"
+    post "unlike"
   end
 
   devise_for :users
