@@ -1,0 +1,18 @@
+<div class="box card white">
+  <%= link_to image_tag(pin.image.url(:medium)), pin %>
+  <div class="card-content">
+    <p><%= pin.description %></p>
+    <p><strong><%= pin.user.name if pin.user %></strong></p>
+
+    <% if pin.user == current_user %>
+      <div class="actions">
+        <%= link_to edit_pin_path(pin) do %>
+          <i class="material-icons">create</i> Edit
+        <% end %>
+        <%= link_to pin, method: :delete, data: { confirm: 'Are you sure you want to delete project?' } do %>
+          <i class="material-icons">clear</i> Delete
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

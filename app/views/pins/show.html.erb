@@ -1,23 +1,19 @@
 <div class="container">
   <%= link_to 'Back', pins_path %>
 
-  <div class="row">
-    <div class="col offset-2 s8">
-      <div class="card white">
-        <div class-"card-title">
-          <%= image_tag @pin.image.url(:medium) %>
-        </div>
-        <div class="card-content">
-          <p><%= @pin.description %></p>
-          <p><strong><%= @pin.user.name if @pin.user %></strong></p>
+  <div class="card white">
+    <div class-"card-title">
+      <%= image_tag @pin.image.url(:large) %>
+    </div>
+    <div class="card-content">
+      <p><%= @pin.description %></p>
+      <p><strong><%= @pin.user.name if @pin.user %></strong></p>
 
-          <% if @pin.user == current_user %>
-            <%= link_to edit_pin_path(@pin) do %>
-              <i class="material-icons">create</i> Edit
-            <% end %>
-          <% end %>
-        </div>
-      </div>
+      <% if @pin.user == current_user %>
+        <%= link_to edit_pin_path(@pin) do %>
+          <i class="material-icons">create</i> Edit
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
