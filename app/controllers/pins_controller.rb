@@ -41,13 +41,14 @@ class PinsController < ApplicationController
   end
 
   def like
-    @activity = @pin.activities.build(
-      :user_id => current_user.id,
-      :type => "like"
-    )
+    unless current_user.likes_pin?(@pin)
+      @activity = @pin.activities.build(
+        :user_id => current_user.id,
+        :type => "like"
+      )
 
-    # TODO: prevent same user from liking things multiple times
-    @activity.save
+      @activity.save
+    end
 
     respond_to do |format|
       format.js
