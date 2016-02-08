@@ -3,8 +3,14 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 # Below is used to render this before a page loads
-$ ->
-  $('#pins').imagesLoaded ->
-    $('#pins').masonry
-      itemSelector: '.box'
-      isFitWidth: true
+initMasonry = ->
+  $('#pins').masonry
+    itemSelector: '.box'
+    isFitWidth: true
+
+onLoad = ->
+  initMasonry()
+  $('#pins').imagesLoaded(initMasonry)
+
+$(onLoad)
+# $(document).on('page:load', initMasonry) # jquery.turbolinks handles this for us.
