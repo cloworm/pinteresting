@@ -1,8 +1,8 @@
 <div class="row center">
-  <div class="col s12 m6 l4">
-    <div class="card black">
-      <div class="card-content white-text">
-        <span class="card-title">Log in</span>
+  <div class="col s12 m6 l4 offset-m3 offset-l4">
+    <div class="card white">
+      <div class="card-content black-text">
+        <span class="card-title black-text">Log in</span>
 
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <div class="input-field">
@@ -16,7 +16,7 @@
             <% if devise_mapping.rememberable? -%>
               <div class="field">
                 <%= f.check_box :remember_me %>
-                <%= f.label :remember_me, class: "white-text" %>
+                <%= f.label :remember_me, class: "black-text" %>
               </div>
             <% end -%>
 
