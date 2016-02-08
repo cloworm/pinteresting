@@ -2,7 +2,7 @@
 
   <%= link_to image_tag(pin.image.url(:medium)), pin %>
   <div class="card-content">
-    <p class="flow-text"><%= pin.description %></p>
+    <p class="flow-text"><%= pin.description.downcase %></p>
     <p>by: <%= pin.user.name if pin.user %></p>
   </div>
   <div class="card-action">
