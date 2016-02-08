@@ -1,8 +1,8 @@
 <div class="row center">
-  <div class="col s12 m6 l4">
-    <div class="card black">
-      <div class="card-content white-text">
-        <span class="card-title">Edit <%= resource_name.to_s.humanize %></span>
+  <div class="col s12 m6 l4 offset-m3 offset-l4">
+    <div class="card white">
+      <div class="card-content black-text">
+        <span class="card-title black-text">Edit <%= resource_name.to_s.humanize %></span>
 
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
             <%= devise_error_messages! %>
@@ -36,7 +36,7 @@
             </div>
           <% end %>
 
-          <h2>Cancel my account</h2>
+          <h5>Cancel my account</h5>
 
           <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn" %></p>
 
