@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get "about" => "pages#about" # creates about_path
   get "projects" => "pages#projects" # creates projects_path
 
+  post "please_sign_in" => "pages#please_sign_in", :as => :please_sign_in
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
