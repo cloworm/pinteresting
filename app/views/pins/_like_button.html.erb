@@ -1,18 +1,20 @@
 <div class="like-button-container" data-pin-id="<%= pin.id %>">
-  <%= pin.activities.select{|a| a.like?}.count %>
+  <div class="valign-wrapper">
+    <h7 class="valign"><%= pin.activities.select{|a| a.like?}.count %></h7>
 
-  <% if user_signed_in? %>
-    <% if current_user.likes_pin?(pin) %>
-      <%= link_to pin_unlike_path(pin), method: :post, :remote => true do %>
-        <i class="material-icons">favorite</i>
+    <% if user_signed_in? %>
+      <% if current_user.likes_pin?(pin) %>
+        <%= link_to pin_unlike_path(pin), method: :post, :remote => true do %>
+          <i class="material-icons"> favorite</i>
+        <% end %>
+      <% else %>
+        <%= link_to pin_like_path(pin), method: :post, :remote => true do %>
+          <i class="material-icons"> favorite_border</i>
+        <% end %>
       <% end %>
     <% else %>
-      <%= link_to pin_like_path(pin), method: :post, :remote => true do %>
-        <i class="material-icons">favorite_border</i>
-      <% end %>
+      <i class="material-icons"> favorite</i>
     <% end %>
-  <% else %>
-    <i class="material-icons">favorite</i>
-  <% end %>
+  </div>
 
 </div>
