@@ -8,7 +8,10 @@ var initMasonry = _.debounce(function () {
   var $pins = $("#pins");
 
   if (shouldMasonry()) {
-    if (!masonryIsEnabled) {
+    if (masonryIsEnabled) {
+      $pins.masonry(); // This will re-layout the masonry boxes.
+    }
+    else {
       masonryIsEnabled = true;
       $pins.masonry({
         itemSelector: '.box',
@@ -21,7 +24,7 @@ var initMasonry = _.debounce(function () {
     $pins.masonry('destroy');
     $pins.css({ width: "auto", height: "auto" });
   }
-}, 100);
+}, 50);
 
 var onLoad = function () {
   masonryIsEnabled = false;
