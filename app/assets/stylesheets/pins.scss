@@ -9,8 +9,30 @@
 .box {
   margin: 2px;
   width: 214px;
+
+  img {
+    width: 100%;
+  }
 }
 
-.box img{
-  width:100%;
+.pin-card-sm {
+  .card-content {
+    padding: 10px 20px;
+  }
+
+  .card-action {
+    padding: 10px 20px;
+
+    .row {
+      margin-bottom: 0;
+    }
+
+    a {
+      margin: 0 !important;
+    }
+
+    .material-icons {
+      font-size: $card-action-icon-font-size;
+    }
+  }
 }

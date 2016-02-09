@@ -11,4 +11,8 @@ class Pin < ActiveRecord::Base
   validates :image, presence: true
   validates :description, presence: true
 
+  def likes_count
+    @likes_count ||= activities.select { |a| a.like? }.count
+  end
+
 end

@@ -1,4 +1,4 @@
-<div class="box card white">
+<div class="box card white pin-card-sm">
 
   <%= link_to image_tag(pin.image.url(:medium)), pin %>
   <div class="card-content">
@@ -6,24 +6,27 @@
     <p><strong><%= pin.user.name if pin.user %></strong></p>
   </div>
   <div class="card-action">
+    <div class="row">
 
-    <div class="row center-align">
-      <div class="col s4">
+      <div class="col s4 center-align">
         <%= render 'like_button', pin: pin %>
       </div>
 
-      <div class="col s8">
-        <% if pin.user == current_user %>
-          <div class="actions">
-            <%= link_to edit_pin_path(pin) do %>
-              <i class="material-icons tooltipped" data-position="top" data-delay="50" data-tooltip="Edit">create</i>
-            <% end %>
-            <%= link_to pin, method: :delete, data: { confirm: 'Are you sure you want to delete project?' } do %>
-              <i class="material-icons tooltipped" data-position="top" data-delay="50" data-tooltip="Delete">clear</i>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
+      <% if pin.user == current_user %>
+        <div class="col s4 center-align">
+          <%= link_to edit_pin_path(pin) do %>
+            <i class="material-icons tooltipped" data-position="top" data-delay="50" data-tooltip="Edit">create</i>
+          <% end %>
+        </div>
+      <% end %>
+
+      <% if pin.user == current_user %>
+        <div class="col s4 center-align">
+          <%= link_to pin, method: :delete, data: { confirm: 'Are you sure you want to delete project?' } do %>
+            <i class="material-icons tooltipped" data-position="top" data-delay="50" data-tooltip="Delete">clear</i>
+          <% end %>
+        </div>
+      <% end %>
 
     </div>
   </div>

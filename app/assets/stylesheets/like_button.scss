@@ -1,0 +1,22 @@
+.like-button-container {
+  position: relative;
+
+  .likes-count {
+    position: absolute;
+    top: 6px;
+    left: 17px;
+    font-weight: bold;
+  }
+
+  .liked {
+    .likes-count {
+      color: $card-bg-color;
+    }
+  }
+
+  .unliked {
+    .likes-count {
+      color: $card-link-color;
+    }
+  }
+}
