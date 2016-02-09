@@ -13,6 +13,11 @@
   img {
     width: 100%;
   }
+
+  @media #{$tiny-and-down} {
+    width: 100%;
+    margin: 2px 0;
+  }
 }
 
 .pin-card-sm {
