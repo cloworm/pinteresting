@@ -24,6 +24,7 @@ var initMasonry = _.debounce(function () {
 }, 100);
 
 var onLoad = function () {
+  masonryIsEnabled = false;
   initMasonry();
   $('#pins').imagesLoaded(initMasonry);
 }
