@@ -1,5 +1,6 @@
 var ready = function() {
   $(".button-collapse").sideNav();
+
   $('.dropdown-button').dropdown({
     inDuration: 300,
     outDuration: 225,
@@ -9,13 +10,16 @@ var ready = function() {
     belowOrigin: true, // Displays dropdown below the button
     alignment: 'left' // Displays dropdown with edge aligned to the left of button
   });
+
   $('.collapsible').collapsible({
-      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+    accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
   });
+
   $('.tooltipped').tooltip({delay: 50});
 };
 
 $(document).ready(ready);
-$(document).on('page:load', ready);
 
 // Using document.ready with turbo-links http://stackoverflow.com/a/18770589
+// $(document).on('page:load', ready); // jquery.turbolinks handles for us.
+

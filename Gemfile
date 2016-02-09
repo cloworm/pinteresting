@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby "2.2.4"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.8'
+gem 'rails', '4.2.5.1'
 # Use SCSS for stylesheets
 gem 'sass', '~> 3.4.21'
 gem 'sass-rails', '~> 5.0.4'
@@ -17,7 +17,7 @@ gem 'turbolinks'
 gem 'jquery-turbolinks'
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 4.1.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.

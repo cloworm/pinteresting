@@ -104,3 +104,12 @@ To halt:
 ```terminal
 vagrant halt
 ```
+
+# Rails from Vagrant
+
+As of Rails 4.2 you must specify the IP of 0.0.0.0 to be able to connect to your server
+running in your vagrant box.
+
+```
+rails s -b 0.0.0.0
+```
