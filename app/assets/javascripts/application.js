@@ -19,6 +19,8 @@
 //
 //= require materialize-sprockets
 //
+//= require vendor/lodash
+//
 //= require_tree .
 //
 // jquery.turbolinks docs say this has to come last in sprockets.
