@@ -1,5 +1,4 @@
 <div class="like-button-container" data-pin-id="<%= pin.id %>">
-
   <% if user_signed_in? %>
     <% if current_user.likes_pin?(pin) %>
       <%= link_to pin_unlike_path(pin), class: "liked", method: :post, :remote => true do %>
@@ -11,7 +10,7 @@
         <% unless pin.likes_count.zero? %>
           <h7 class="likes-count"><%= pin.likes_count %></h7>
         <% end %>
-        <i class="material-icons"> favorite_border</i>
+        <i class="material-icons">favorite_border</i>
       <% end %>
     <% end %>
   <% else %>
