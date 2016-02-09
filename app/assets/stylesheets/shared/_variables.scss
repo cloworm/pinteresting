@@ -1,5 +1,4 @@
 // Materialize
-
 $primary-color: color("red", "lighten-1") !default;
 $primary-color-light: false !default;
 $primary-color-dark: false !default;
@@ -14,6 +13,18 @@ $success-color: color("green", "base") !default;
 $error-color: color("red", "base") !default;
 
 $link-color: color("red", "darken-1") !default;
+
+// Media Query Ranges
+$tiny-screen-up: 470px;
+$small-screen-up: 601px !default;
+$medium-screen-up: 993px !default;
+$large-screen-up: 1201px !default;
+$tiny-screen: 469px;
+$small-screen: 600px !default;
+$medium-screen: 992px !default;
+$large-screen: 1200px !default;
+
+$tiny-and-down: "only screen and (max-width : #{$tiny-screen})";
 
 // Custom
 $card-action-icon-font-size: 2.1rem;
