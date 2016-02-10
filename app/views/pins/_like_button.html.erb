@@ -1,24 +1,26 @@
 <div class="like-button-container" data-pin-id="<%= pin.id %>">
-  <% if user_signed_in? %>
-    <% if current_user.likes_pin?(pin) %>
-      <%= link_to pin_unlike_path(pin), class: "liked", method: :post, :remote => true do %>
-        <h7 class="likes-count"><%= pin.likes_count %></h7>
-        <i class="material-icons"> favorite</i>
+  <div class="likes-button-inner">
+    <% if user_signed_in? %>
+      <% if current_user.likes_pin?(pin) %>
+        <%= link_to pin_unlike_path(pin), class: "liked", method: :post, :remote => true do %>
+          <h7 class="likes-count"><%= pin.likes_count %></h7>
+          <i class="material-icons"> favorite</i>
+        <% end %>
+      <% else %>
+        <%= link_to pin_like_path(pin), class: "unliked", method: :post, :remote => true do %>
+          <% unless pin.likes_count.zero? %>
+            <h7 class="likes-count"><%= pin.likes_count %></h7>
+          <% end %>
+          <i class="material-icons">favorite_border</i>
+        <% end %>
       <% end %>
     <% else %>
-      <%= link_to pin_like_path(pin), class: "unliked", method: :post, :remote => true do %>
-        <% unless pin.likes_count.zero? %>
-          <h7 class="likes-count"><%= pin.likes_count %></h7>
-        <% end %>
+      <%= link_to please_sign_in_path, class: "unliked", method: :post do %>
+        <h7 class="likes-count"><%= pin.likes_count %></h7>
         <i class="material-icons">favorite_border</i>
+        <!-- TODO: Show clickable or already filled in when no user signed in? -->
+        <!-- <i class="material-icons">favorite</i> -->
       <% end %>
     <% end %>
-  <% else %>
-    <%= link_to please_sign_in_path, class: "unliked", method: :post do %>
-      <h7 class="likes-count"><%= pin.likes_count %></h7>
-      <i class="material-icons">favorite_border</i>
-      <!-- TODO: Show clickable or already filled in when no user signed in? -->
-      <!-- <i class="material-icons">favorite</i> -->
-    <% end %>
-  <% end %>
+  </div>
 </div>

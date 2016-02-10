@@ -19,6 +19,9 @@
 //
 //= require materialize-sprockets
 //
+// using input field instead of select field requires select2.full build.
+//= require vendor/select2.full.min
+//
 //= require vendor/lodash
 //
 //= require_tree .

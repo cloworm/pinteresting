@@ -32,12 +32,31 @@
       margin-bottom: 0;
     }
 
-    a {
-      margin: 0 !important;
-    }
-
     .material-icons {
       font-size: $card-action-icon-font-size;
     }
+  }
+
+  .card-options {
+    a {
+      margin: 0 !important;
+    }
+  }
+}
+
+.pin-card-lg {
+  .card-title {
+    text-align: center;
+  }
+}
+
+.pin-tags {
+  .pin-tag {
+    height: 20px;
+    font-size: 11px;
+    line-height: 20px;
+    padding: 0 10px;
+    text-transform: none;
+    margin-bottom: 4px
   }
 }
