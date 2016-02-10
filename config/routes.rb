@@ -5,6 +5,15 @@ Rails.application.routes.draw do
     post "unlike"
   end
 
+Rails.application.routes.draw do
+  resources :pins
+  resources :tags, only: [:index, :show]
+
+end
+
+
+  resources :pins do
+  end
   devise_for :users
   root "pins#index"
   get "about" => "pages#about" # creates about_path

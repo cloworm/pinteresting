@@ -1,19 +1,26 @@
 <div class="container">
-  <%= link_to 'Back', pins_path %>
+  <%= link_to 'Go Back', pins_path %>
 
-  <div class="card white">
-    <div class-"card-title">
+<div class="card white">
+  <div class="card-content black-text">
+    <span class="card-title centered">
       <%= image_tag @pin.image.url(:large) %>
-    </div>
-    <div class="card-content">
-      <p><%= @pin.description %></p>
-      <p><strong><%= @pin.user.name if @pin.user %></strong></p>
+    </span>
+      <h5><%= @pin.description %></h5>
+      <p><strong>By: <%= @pin.user.name if @pin.user %></strong></p>
 
       <% if @pin.user == current_user %>
         <%= link_to edit_pin_path(@pin) do %>
           <i class="material-icons">create</i> Edit
         <% end %>
       <% end %>
+
+      <div class="row">
+        <div class="col s12">
+          <h7>Tags: </h7>
+          <%= @pin.tag_list %>
+        </div>
+      </div>
 
       <%= form_for [@pin, @pin.activities.build] do |f| %>
 
