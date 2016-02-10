@@ -1,10 +1,17 @@
 .like-button-container {
   position: relative;
 
+  .likes-button-inner {
+    position: relative;
+    display: inline-block;
+  }
+
   .likes-count {
     position: absolute;
-    top: 6px;
-    left: 17px;
+    top: 50%;
+    left: 50%;
+    margin-left: -0.3em;
+    margin-top: -0.9em;
     font-weight: bold;
   }
 
