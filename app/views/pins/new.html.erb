@@ -1,9 +1,19 @@
-<div class="container">
-  <h1>New pin</h1>
+<div class="row center">
+  <div class="col s12 m6 l4 offset-m3 offset-l4">
+    <div class="card white">
+      <div class="card-content black-text">
+        <span class="card-title">
+          <h1>New Project</h1>
+        </span>
 
+        <%= render 'form' %>
 
-  <%= render 'form' %>
+      </div>
+      <div class="card-action">
 
+      <%= link_to 'Back', pins_path %>
 
-  <%= link_to 'Back', pins_path %>
+      </div>
+    </div>
+  </div>
 </div>
