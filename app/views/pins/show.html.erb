@@ -7,18 +7,26 @@
       <%= image_tag @pin.image.url(:large) %>
     </span>
       <h5><%= @pin.description %></h5>
-      <p><strong>By: <%= @pin.user.name if @pin.user %></strong></p>
+      <p>By:
+        <%= mail_to @pin.user.email do %>
+        <%= @pin.user.name if @pin.user %>
+      <% end %></p>
 
-      <% if @pin.user == current_user %>
-        <%= link_to edit_pin_path(@pin) do %>
-          <i class="material-icons">create</i> Edit
-        <% end %>
-      <% end %>
+          <%= render 'like_button', pin: @pin %>
 
       <div class="row">
         <div class="col s12">
           <h7>Tags: </h7>
           <%= @pin.tag_list %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s1 offset-s11">
+          <% if @pin.user == current_user %>
+            <%= link_to edit_pin_path(@pin) do %>
+              <i class="material-icons">create</i> Edit
+            <% end %>
+          <% end %>
         </div>
       </div>
 
@@ -45,8 +53,6 @@
           </p>
         <% end %>
       <% end %>
-
-      <%= render 'like_button', pin: @pin %>
 
     </div>
   </div>
