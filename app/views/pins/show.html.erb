@@ -1,11 +1,12 @@
 <div class="container">
   <%= link_to 'Go Back', pins_path %>
 
-<div class="card white">
-  <div class="card-content black-text">
-    <span class="card-title centered">
-      <%= image_tag @pin.image.url(:large) %>
-    </span>
+  <div class="card white pin-card-lg">
+    <div class="card-content black-text">
+      <div class="card-title">
+        <%= image_tag @pin.image.url(:large) %>
+      </div>
+
       <h5><%= @pin.description %></h5>
       <p><strong>By: <%= @pin.user.name if @pin.user %></strong></p>
 
@@ -47,7 +48,6 @@
       <% end %>
 
       <%= render 'like_button', pin: @pin %>
-
     </div>
   </div>
 </div>
