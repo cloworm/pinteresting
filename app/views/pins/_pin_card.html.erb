@@ -8,7 +8,7 @@
       <% end %></p>
   </div>
 
-  <div class="card-action">
+  <div class="card-action card-options">
     <div class="row">
       <div class="col s4 center-align">
         <%= render 'pins/like_button', pin: pin %>
@@ -38,7 +38,7 @@
         <div class="col s12">
           <div class="pin-tags">
             <% pin.tag_list.each do |tag| %>
-              <%= link_to tag_path(tag), :class => "chip pin-tag" do %>
+              <%= link_to tag_path(tag), :class => "chip pin-tag btn" do %>
                 <%= tag %>
               <% end %>
             <% end %>
