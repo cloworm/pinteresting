@@ -1,7 +1,8 @@
 class PinsController < ApplicationController
+  include PinsHelper
   before_action :set_pin, only: [:show, :edit, :update, :destroy, :like, :unlike]
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show], unless: :admin_logged_in?
+  before_action :correct_user, only: [:edit, :update, :destroy], unless: :admin_logged_in?
 
   def index
     @pins = Pin.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10).includes(:activities)
