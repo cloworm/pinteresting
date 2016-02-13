@@ -78,28 +78,28 @@ Rails.application.configure do
 
   # Required for Heroku
   # Note to set this to your actual host
-  config.action_mailer.default_url_options = { host: 'saintgobainfablab.com', port: 3000 }
+  config.action_mailer.default_url_options = { host: ENV["DEFAULT_URL"] }
 
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-  address: "smtp.sendgrid.net",
-  port: 25,
-  domain: "heroku.com",
-  authentication: "plain",
-  enable_starttls_auto: true,
-  user_name: ENV["app47184325@heroku.com"],
-  password: ENV["zvihrbf72625"]
+    address: "smtp.sendgrid.net",
+    port: 25,
+    domain: "heroku.com",
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: ENV["SENDGRID_USERNAME"],
+    password: ENV["SENDGRID_PASSWORD"]
   }
 
   #Sets Paperclip to upload images to Amazon S3 on Heroku
   config.paperclip_defaults = {
-  :storage => :s3,
-  :s3_credentials => {
-    :bucket => ENV['S3_BUCKET_NAME'],
-    :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-    :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => ENV['S3_BUCKET_NAME'],
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+    }
   }
-}
 
 end
