@@ -1,1 +1,18 @@
-<%= @user.name %>
+<div class="container">
+  <div class="row">
+
+    <div class="col s12 m5 l4">
+      <%= @user.name %>
+
+    </div>
+
+    <div class="col s12 m7 l8">
+      <div class="profile-pins">
+        <% @user.pins.each do |pin| %>
+          <%= render 'pins/pin_card', pin: pin %>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+</div>
