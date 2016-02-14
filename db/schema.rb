@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160214212805) do
+ActiveRecord::Schema.define(version: 20160214225002) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "body",       limit: 255
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20160214212805) do
   create_table "tags", force: :cascade do |t|
     t.string  "name"
     t.integer "taggings_count", default: 0
+    t.string  "category"
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true

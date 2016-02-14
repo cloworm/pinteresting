@@ -17,8 +17,26 @@
   <div class="input-field">
     <%= f.text_field :description, placeholder:"Description", class: "materialize-textarea" %>
   </div>
-  <div class="input-field">
-    <%= f.text_field :tag_list, placeholder: "Tags", class: "materialize-textarea" %>
+
+  <div class="row">
+    <div class="col s6">
+      <h6>Lab</h6>
+      <% Tag.place.all.each do |tag| %>
+        <p>
+          <%= f.radio_button :tag_list, tag.name.downcase %>
+          <%= f.label "tag_list_#{tag.name.downcase}".parameterize.underscore, tag.name.downcase %>
+        </p>
+      <% end %>
+    </div>
+    <div class="col s6">
+      <h6>Machine(s)</h6>
+      <% Tag.machine.all.each do |tag| %>
+        <p>
+          <%= f.check_box :tag_list, { :multiple => true }, tag.name.downcase, nil %>
+          <%= f.label "tag_list_#{tag.name.downcase}".parameterize.underscore, tag.name.downcase %>
+        </p>
+      <% end %>
+    </div>
   </div>
 
   <div class="actions">
