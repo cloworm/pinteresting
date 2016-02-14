@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :tags, only: :show
 
   devise_for :users
+  resources :users, :only => [:show]
   root "pins#index"
   get "about" => "pages#about" # creates about_path
   get "projects" => "pages#projects" # creates projects_path

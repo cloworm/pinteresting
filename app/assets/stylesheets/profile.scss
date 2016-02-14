@@ -1,0 +1,25 @@
+.profile-pins {
+  .pin-card-sm {
+    width: 100%;
+  }
+}
+
+.profile-banner {
+  .profile-bg {
+    padding-bottom: 25.0px / 92px * 100%;
+    background-color: color("red", "lighten-2");
+    position: relative;
+
+    .card-profile-image {
+      width: 110px;
+      height: 110px;
+      position: absolute;
+      top: 50%;
+      z-index: 1;
+      left: 50%;
+      margin-top: -55px;
+      margin-left: -55px;
+    }
+  }
+
+}

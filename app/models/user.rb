@@ -6,8 +6,49 @@ class User < ActiveRecord::Base
 
   has_many :pins
   has_many :activities
+  has_many :acquired_likes, -> { where type: "like" }, through: :pins, source: :activities
+
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "110x110>" }
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   validates :name, presence: true
+
+  LAB_OPTIONS = {
+    "bristol" => "Bristol, UK",
+    "suwa" => "Suwa, Japan",
+    "wayne" => "Wayne, NJ",
+    "willich" => "Willich, Germany"
+  }
+
+  SKILL_LEVEL_OPTIONS = {
+    "novice" => "Novice",
+    "intermediate" => "Intermediate",
+    "expert" => "Expert",
+  }
+
+  def self.lab_options
+    LAB_OPTIONS.map do |short, pretty|
+      [pretty, short]
+    end
+  end
+
+  def self.skill_level_options
+    SKILL_LEVEL_OPTIONS.map do |short, pretty|
+      [pretty, short]
+    end
+  end
+
+  def pretty_lab
+    LAB_OPTIONS[lab]
+  end
+
+  def pretty_skill_2d
+    SKILL_LEVEL_OPTIONS[skill_2d]
+  end
+
+  def pretty_skill_3d
+    SKILL_LEVEL_OPTIONS[skill_3d]
+  end
 
   def likes_pin? pin
     Activity.where(
@@ -16,4 +57,5 @@ class User < ActiveRecord::Base
       pin_id: pin.id
     ).any?
   end
+
 end

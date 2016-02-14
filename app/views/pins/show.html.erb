@@ -9,18 +9,27 @@
 
       <h5><%= @pin.description %></h5>
       <p>By:
-        <%= mail_to @pin.user.email do %>
-        <%= @pin.user.name if @pin.user %>
-      <% end %></p>
+        <%= link_to @pin.user do %>
+          <%= @pin.user.name if @pin.user %>
+        <% end %>
+      </p>
 
-          <%= render 'like_button', pin: @pin %>
+      <%= render 'like_button', pin: @pin %>
 
-      <div class="row">
-        <div class="col s12">
-          <h7>Tags: </h7>
-          <%= @pin.tag_list %>
+      <% if @pin.tag_list.any? %>
+        <div class="row">
+          <div class="col s12">
+            <div class="pin-tags">
+              <% @pin.tag_list.each do |tag| %>
+                <%= link_to tag_path(tag), :class => "chip pin-tag btn" do %>
+                  <%= tag %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
         </div>
-      </div>
+      <% end %>
+
       <div class="row">
         <div class="col s1 offset-s11">
           <% if @pin.user == current_user %>
@@ -55,7 +64,6 @@
         <% end %>
       <% end %>
 
-      <%= render 'like_button', pin: @pin %>
     </div>
   </div>
 </div>

@@ -1,9 +1,9 @@
 <div class="box card white pin-card-sm">
 
-  <%= link_to image_tag(pin.image.url(:medium)), pin %>
+  <%= link_to image_tag(pin.image.url(image_size)), pin %>
   <div class="card-content">
     <h5><%= pin.description.downcase %></h5>
-    <p>by: <%= mail_to pin.user.email do %>
+    <p>by: <%= link_to pin.user do %>
       <%= pin.user.name if pin.user %>
       <% end %></p>
   </div>

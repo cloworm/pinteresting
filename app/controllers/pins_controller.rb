@@ -5,7 +5,7 @@ class PinsController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy], unless: :admin_logged_in?
 
   def index
-    @pins = Pin.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10).includes(:activities)
+    @pins = Pin.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 30).includes(:activities)
   end
 
   def show

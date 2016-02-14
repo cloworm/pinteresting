@@ -8,7 +8,7 @@
 
   <div id="pins" class="transitions-enabled">
     <% @pins.each do |pin| %>
-      <%= render 'pin_card', pin: pin %>
+      <%= render_pin_card(pin) %>
     <% end %>
   </div>
 

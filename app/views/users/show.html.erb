@@ -1,0 +1,75 @@
+<div class="container">
+  <div class="row">
+    <div class="card profile-banner">
+      <div class="profile-bg">
+        <figure class="card-profile-image">
+          <%= image_tag @user.avatar.url(:thumb), alt: "profile image", class: "circle z-depth-2 responsive-img activator" %>
+        </figure>
+      </div>
+      <div class="card-content">
+        <div class="row">
+          <div class="col s3 offset-s1">
+            <h4 class="card-title grey-text text-darken-4"><%= @user.name %></h4>
+            <p class="medium-small grey-text"><%= @user.pretty_lab %></p>
+          </div>
+          <div class="col s4 center-align">
+            <h4 class="card-title grey-text text-darken-4"><%= @user.pins.count %></h4>
+            <p class="medium-small grey-text">Projects</p>
+          </div>
+          <div class="col s4 center-align">
+            <h4 class="card-title grey-text text-darken-4"><%= @user.acquired_likes.count %></h4>
+            <p class="medium-small grey-text">Likes</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+
+    <div class="col s12 m5 l4">
+      <div class="card-panel">
+        <p>
+          <% if @user.description %>
+            <%= @user.description %>
+          <% else %>
+            <i>This user has not entered a description yet.</i>
+          <% end %>
+        </p>
+      </div>
+      <div class="card-panel">
+        <table>
+          <tbody>
+            <tr>
+              <td><strong>I am a...</strong></td>
+              <td><%= @user.title %></td>
+            </tr>
+            <tr>
+              <td><strong>2D Design Level</strong></td>
+              <td><%= @user.pretty_skill_2d %></td>
+            </tr>
+            <tr>
+              <td><strong>3D Design Level</strong></td>
+              <td><%= @user.pretty_skill_3d %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="col s12 m7 l8">
+      <div class="profile-pins">
+        <% @pins.each do |pin| %>
+          <%= render_pin_card(pin, image_size: :large) %>
+        <% end %>
+      </div>
+      <div class="center">
+        <%= will_paginate @pins %>
+      </div>
+    </div>
+
+  </div>
+</div>
