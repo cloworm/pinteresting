@@ -21,7 +21,7 @@
   <div class="row">
     <div class="col s6">
       <h6>Lab</h6>
-      <% Tag.place.all.each do |tag| %>
+      <% Tag.place.order(:name).all.each do |tag| %>
         <p>
           <%= f.check_box :tag_list, { :multiple => true }, tag.name.downcase, nil %>
           <%= f.label "tag_list_#{tag.name.downcase}".parameterize.underscore, tag.name.downcase %>
@@ -30,7 +30,7 @@
     </div>
     <div class="col s6">
       <h6>Machine(s)</h6>
-      <% Tag.machine.all.each do |tag| %>
+      <% Tag.machine.order(:name).all.each do |tag| %>
         <p>
           <%= f.check_box :tag_list, { :multiple => true }, tag.name.downcase, nil %>
           <%= f.label "tag_list_#{tag.name.downcase}".parameterize.underscore, tag.name.downcase %>
