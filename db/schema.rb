@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160211024513) do
+ActiveRecord::Schema.define(version: 20160214175757) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "body",       limit: 255
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20160211024513) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.boolean  "admin"
+    t.string   "description"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

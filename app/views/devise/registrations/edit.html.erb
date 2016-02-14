@@ -15,6 +15,10 @@
               <%= f.email_field :email, autofocus: true, class: "validate", placeholder: "E-mail" %>
             </div>
 
+            <div class="input-field">
+              <%= f.text_field :description, autofocus: true, class: "validate", placeholder: "Write a short description about yourself" %>
+            </div>
+
             <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
               <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
             <% end %>
