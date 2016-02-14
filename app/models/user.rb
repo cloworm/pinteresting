@@ -10,6 +10,43 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true
 
+  LAB_OPTIONS = {
+    "bristol" => "Bristol, UK",
+    "suwa" => "Suwa, Japan",
+    "wayne" => "Wayne, NJ",
+    "willich" => "Willich, Germany"
+  }
+
+  SKILL_LEVEL_OPTIONS = {
+    "novice" => "Novice",
+    "intermediate" => "Intermediate",
+    "expert" => "Expert",
+  }
+
+  def self.lab_options
+    LAB_OPTIONS.map do |short, pretty|
+      [pretty, short]
+    end
+  end
+
+  def self.skill_level_options
+    SKILL_LEVEL_OPTIONS.map do |short, pretty|
+      [pretty, short]
+    end
+  end
+
+  def pretty_lab
+    LAB_OPTIONS[lab]
+  end
+
+  def pretty_skill_2d
+    SKILL_LEVEL_OPTIONS[skill_2d]
+  end
+
+  def pretty_skill_3d
+    SKILL_LEVEL_OPTIONS[skill_3d]
+  end
+
   def likes_pin? pin
     Activity.where(
       type: "like",
@@ -17,4 +54,5 @@ class User < ActiveRecord::Base
       pin_id: pin.id
     ).any?
   end
+
 end

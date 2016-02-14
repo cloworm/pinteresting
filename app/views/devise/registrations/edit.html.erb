@@ -20,23 +20,29 @@
           </div>
 
           <div class="input-field">
-            <i class="material-icons prefix">short_text</i>
+            <i class="material-icons prefix">android</i>
+            <%= f.text_field :title, autofocus: true, class: "validate" %>
+            <label for="user_title">Job Title</label>
+          </div>
+
+          <div class="input-field">
+            <i class="material-icons prefix">description</i>
             <%= f.text_area :description, class: "validate materialize-textarea" %>
             <label for="user_description">Describe Yourself</label>
           </div>
 
           <div class="input-field">
-            <%= f.select :lab, options_for_select([["Bristol, UK", "bristol"], ["Suwa, Japan", "suwa"], ["Wayne, USA", "wayne"], ["Willich, Germany", "willich"]], resource.lab), :include_blank => 'Choose your lab', class: "validate" %>
+            <%= f.select :lab, options_for_select(User.lab_options, resource.lab), :include_blank => 'Choose your lab', class: "validate" %>
             <label for="user_lab">Location</label>
           </div>
 
           <div class="input-field">
-            <%= f.select :skill_2d, options_for_select([["Novice", "novice"], ["Intermediate", "intermediate"], ["Expert", "expert"]], resource.skill_2d), :include_blank => 'Choose your 2D Drawing skill level', class: "validate" %>
+            <%= f.select :skill_2d, options_for_select(User.skill_level_options, resource.skill_2d), :include_blank => 'Choose your 2D Drawing skill level', class: "validate" %>
             <label for="user_skill_2d">2D Drawing Skill Level</label>
           </div>
 
           <div class="input-field">
-            <%= f.select :skill_3d, options_for_select([["Novice", "novice"], ["Intermediate", "intermediate"], ["Expert", "expert"]], resource.skill_3d), :include_blank => 'Choose your 3D Drawing skill level', class: "validate" %>
+            <%= f.select :skill_3d, options_for_select(User.skill_level_options, resource.skill_3d), :include_blank => 'Choose your 3D Drawing skill level', class: "validate" %>
             <label for="user_skill_3d">3D Drawing Skill Level</label>
           </div>
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160214192237) do
+ActiveRecord::Schema.define(version: 20160214205839) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "body",       limit: 255
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 20160214192237) do
     t.string   "lab"
     t.string   "skill_2d"
     t.string   "skill_3d"
+    t.string   "title"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

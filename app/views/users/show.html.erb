@@ -10,7 +10,7 @@
         <div class="row">
           <div class="col s3 offset-s1">
             <h4 class="card-title grey-text text-darken-4"><%= @user.name %></h4>
-            <p class="medium-small grey-text">(flag icon) Wayne, NJ USA</p>
+            <p class="medium-small grey-text"><%= @user.pretty_lab %></p>
           </div>
           <div class="col s4 center-align">
             <h4 class="card-title grey-text text-darken-4"><%= @user.pins.count %></h4>
@@ -45,15 +45,15 @@
           <tbody>
             <tr>
               <td><strong>I am a...</strong></td>
-              <td>Mancat</td>
+              <td><%= @user.title %></td>
             </tr>
             <tr>
               <td><strong>2D Design Level</strong></td>
-              <td>Expert</td>
+              <td><%= @user.pretty_skill_2d %></td>
             </tr>
             <tr>
               <td><strong>3D Design Level</strong></td>
-              <td>Intermediate</td>
+              <td><%= @user.pretty_skill_3d %></td>
             </tr>
           </tbody>
         </table>
