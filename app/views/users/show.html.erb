@@ -3,7 +3,11 @@
     <div class="card profile-banner">
       <div class="profile-bg">
         <figure class="card-profile-image">
-          <%= image_tag @user.avatar.url(:thumb), alt: "profile image", class: "circle z-depth-2 responsive-img activator" %>
+          <% if @user.avatar.exists? %>
+            <%= image_tag @user.avatar.url(:thumb), alt: "profile image", class: "circle z-depth-2 responsive-img activator" %>
+          <% else %>
+            <i class="large material-icons">face</i>
+          <% end %>
         </figure>
       </div>
       <div class="card-content">
