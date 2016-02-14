@@ -1,51 +1,82 @@
-<div class="row center">
+<div class="row">
   <div class="col s12 m6 l4 offset-m3 offset-l4">
     <div class="card white">
       <div class="card-content black-text">
-        <span class="card-title black-text">Edit <%= resource_name.to_s.humanize %></span>
+        <h2 class="card-title black-text center">Edit Profile</h2>
 
-          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-            <%= devise_error_messages! %>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= devise_error_messages! %>
 
-            <div class="input-field">
-              <%= f.text_field :name, autofocus: true, class: "validate", placeholder: "Name" %>
-            </div>
+          <div class="input-field">
+            <i class="material-icons prefix">account_circle</i>
+            <%= f.text_field :name, autofocus: true, class: "validate" %>
+            <label for="user_name">Full Name</label>
+          </div>
 
-            <div class="input-field">
-              <%= f.email_field :email, autofocus: true, class: "validate", placeholder: "E-mail" %>
-            </div>
+          <div class="input-field">
+            <i class="material-icons prefix">email</i>
+            <%= f.email_field :email, class: "validate" %>
+            <label for="user_email">E-mail</label>
+          </div>
 
-            <div class="input-field">
-              <%= f.text_field :description, autofocus: true, class: "validate", placeholder: "Write a short description about yourself" %>
-            </div>
+          <div class="input-field">
+            <i class="material-icons prefix">short_text</i>
+            <%= f.text_area :description, class: "validate materialize-textarea" %>
+            <label for="user_description">Describe Yourself</label>
+          </div>
 
-            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-              <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-            <% end %>
+          <div class="input-field">
+            <%= f.select :lab, options_for_select([["Bristol, UK", "bristol"], ["Suwa, Japan", "suwa"], ["Wayne, USA", "wayne"], ["Willich, Germany", "willich"]], resource.lab), :include_blank => 'Choose your lab', class: "validate" %>
+            <label for="user_lab">Location</label>
+          </div>
 
-            <div class="input-field">
-             <%= f.password_field :password, autocomplete: "off", class: "validate", placeholder: "New Password (minimum 8 characters)" %>
-            </div>
+          <div class="input-field">
+            <%= f.select :skill_2d, options_for_select([["Novice", "novice"], ["Intermediate", "intermediate"], ["Expert", "expert"]], resource.skill_2d), :include_blank => 'Choose your 2D Drawing skill level', class: "validate" %>
+            <label for="user_skill_2d">2D Drawing Skill Level</label>
+          </div>
 
-            <div class="input-field">
-              <%= f.password_field :password_confirmation, autocomplete: "off", class: "validate", placeholder: "Password confirmation" %>
-            </div>
+          <div class="input-field">
+            <%= f.select :skill_3d, options_for_select([["Novice", "novice"], ["Intermediate", "intermediate"], ["Expert", "expert"]], resource.skill_3d), :include_blank => 'Choose your 3D Drawing skill level', class: "validate" %>
+            <label for="user_skill_3d">3D Drawing Skill Level</label>
+          </div>
 
-            <div class="input-field">
-              <%= f.password_field :current_password, autocomplete: "off", class: "validate", placeholder: "Current Password" %>
-            </div>
-
-            <div class="actions">
-              <%= f.submit "Update", class: "btn" %>
-            </div>
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
           <% end %>
 
-          <h5>Cancel my account</h5>
+          <h5 class="center">Change Password</h5>
 
-          <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn" %></p>
+          <div class="input-field">
+           <%= f.password_field :password, autocomplete: "off", class: "validate", placeholder: "New Password (minimum 8 characters)" %>
+          </div>
+
+          <div class="input-field">
+            <%= f.password_field :password_confirmation, autocomplete: "off", class: "validate", placeholder: "Password confirmation" %>
+          </div>
+
+          <h5 class="center">Confirm Current Password</h5>
+
+          <div class="input-field">
+            <%= f.password_field :current_password, autocomplete: "off", class: "validate", placeholder: "Current Password" %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "Update", class: "btn" %>
+          </div>
+        <% end %>
 
         <div class="card-action">
           <%= link_to "Back", :back %>
+        </div>
+      </div>
+    </div>
+    <div class="card white">
+      <div class="card-content">
+        <h5 class="card-title center">Danger Zone</h5>
+        <div class="row">
+          <div class="col">
+            <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn" %>
+          </div>
         </div>
       </div>
     </div>
