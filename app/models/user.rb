@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
   has_many :activities
   has_many :acquired_likes, -> { where type: "like" }, through: :pins, source: :activities
 
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "110x110>" }
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+
   validates :name, presence: true
 
   LAB_OPTIONS = {

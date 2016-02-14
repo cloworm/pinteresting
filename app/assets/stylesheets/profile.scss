@@ -7,7 +7,7 @@
 .profile-banner {
   .profile-bg {
     padding-bottom: 25.0px / 92px * 100%;
-    background-color: black;
+    background-color: color("red", "lighten-2");
     position: relative;
 
     .card-profile-image {

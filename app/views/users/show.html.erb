@@ -3,7 +3,7 @@
     <div class="card profile-banner">
       <div class="profile-bg">
         <figure class="card-profile-image">
-          <img src="http://demo.geekslabs.com/materialize/v2.1/layout01/images/avatar.jpg" alt="profile image" class="circle z-depth-2 responsive-img activator">
+          <%= image_tag @user.avatar.url(:thumb), alt: "profile image", class: "circle z-depth-2 responsive-img activator" %>
         </figure>
       </div>
       <div class="card-content">
