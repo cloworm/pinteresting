@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :pins
   has_many :activities
+  has_many :acquired_likes, -> { where type: "like" }, through: :pins, source: :activities
 
   validates :name, presence: true
 

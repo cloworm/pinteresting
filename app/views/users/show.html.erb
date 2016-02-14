@@ -1,9 +1,57 @@
 <div class="container">
   <div class="row">
+    <div class="card profile-banner">
+      <div class="profile-bg">
+        <figure class="card-profile-image">
+          <img src="http://demo.geekslabs.com/materialize/v2.1/layout01/images/avatar.jpg" alt="profile image" class="circle z-depth-2 responsive-img activator">
+        </figure>
+      </div>
+      <div class="card-content">
+        <div class="row">
+          <div class="col s3 offset-s1">
+            <h4 class="card-title grey-text text-darken-4"><%= @user.name %></h4>
+            <p class="medium-small grey-text">(flag icon) Wayne, NJ USA</p>
+          </div>
+          <div class="col s4 center-align">
+            <h4 class="card-title grey-text text-darken-4"><%= @user.pins.count %></h4>
+            <p class="medium-small grey-text">Projects</p>
+          </div>
+          <div class="col s4 center-align">
+            <h4 class="card-title grey-text text-darken-4"><%= @user.acquired_likes.count %></h4>
+            <p class="medium-small grey-text">Likes</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
 
     <div class="col s12 m5 l4">
-      <%= @user.name %>
-
+      <div class="card-panel">
+        <p>Chia venmo mustache, disrupt 90's poutine gochujang beard kinfolk sriracha helvetica cred.</p>
+      </div>
+      <div class="card-panel">
+        <table>
+          <tbody>
+            <tr>
+              <td><strong>I am a...</strong></td>
+              <td>Mancat</td>
+            </tr>
+            <tr>
+              <td><strong>2D Design Level</strong></td>
+              <td>Expert</td>
+            </tr>
+            <tr>
+              <td><strong>3D Design Level</strong></td>
+              <td>Intermediate</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <div class="col s12 m7 l8">
