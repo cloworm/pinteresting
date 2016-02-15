@@ -6,16 +6,16 @@
         <ul class="right hide-on-med-and-down">
           <li>
             <%= link_to root_path do %>
-              <i class="material-icons left">home</i> Home
+              <!-- <i class="material-icons left">home</i> --> Home
             <% end %>
           </li>
           <li>
             <%= link_to about_path do %>
-              <i class="material-icons left">info</i> About
+              <!-- <i class="material-icons left">info</i> --> About
             <% end %>
           </li>
           <li>
-            <a class="dropdown-button" href="#" data-activates="fablabs"><i class="material-icons left">public</i> Fab Labs</a>
+            <a class="dropdown-button" href="#" data-activates="fablabs"><!-- <i class="material-icons left">public</i> --> Fab Labs</a>
             <!-- Dropdown Structure -->
             <ul id="fablabs" class="dropdown-content">
               <li><a href="#!">Bristol</a></li>
@@ -25,8 +25,20 @@
             </ul>
           </li>
           <% if user_signed_in? %>
-            <li><%= link_to "Account Settings", edit_user_registration_path %></li>
-            <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+            <li>
+              <a class="dropdown-button" href="#" data-activates="account">
+                <% if current_user.avatar.exists? %>
+                  <%= image_tag current_user.avatar.url(:tiny), class: "circle brand-logo" %>
+                <% else %>
+                <i class="material-icons left">face</i> Account
+                <% end %>
+              </a>
+                <ul id="account" class="dropdown-content">
+                  <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+                  <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+                </ul>
+            </div>
+            </li>
           <% else %>
             <li><%= link_to "Sign In", new_user_session_path %></li>
           <% end %>
@@ -56,8 +68,21 @@
                 </div>
               </li>
               <% if user_signed_in? %>
-                <li><%= link_to "Account Settings", edit_user_registration_path %></li>
-                <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+                <li>
+                  <a class="collapsible-header">
+                    <% if current_user.avatar.exists? %>
+                      <%= image_tag current_user.avatar.url(:tiny), class: "circle left responsive-img" %> Account
+                    <% else %>
+                      <i class="material-icons left">face</i> Account
+                    <% end %>
+                  </a>
+                  <div class="collapsible-body">
+                    <ul>
+                      <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+                      <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+                    </ul>
+                  </div>
+                </li>
               <% else %>
                 <li><%= link_to "Sign In", new_user_session_path %></li>
               <% end %>

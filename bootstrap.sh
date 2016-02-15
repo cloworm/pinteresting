@@ -4,6 +4,7 @@ function install {
     echo installing $1
     shift
     apt-get -y install "$@" >/dev/null 2>&1
+    install imagemagick
 }
 
 echo updating package information
