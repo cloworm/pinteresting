@@ -20,8 +20,15 @@
       <input class="file-path validate" type="text">
     </div>
   </div>
+
   <div class="input-field">
-    <%= f.text_field :description, placeholder:"Description", class: "materialize-textarea" %>
+    <%= f.text_field :title, class: "validate" %>
+    <label for="pin_title">Project Title</label>
+  </div>
+
+  <div class="input-field">
+    <%= f.text_area :description, class: "validate materialize-textarea" %>
+    <label for="pin_description">Project Description</label>
   </div>
 
   <div class="row">

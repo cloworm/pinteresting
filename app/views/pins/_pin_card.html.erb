@@ -2,7 +2,7 @@
 
   <%= link_to image_tag(pin.image.url(image_size)), pin %>
   <div class="card-content">
-    <h5><%= pin.description.downcase %></h5>
+    <h5><%= pin.title %></h5>
     <p>by: <%= link_to pin.user do %>
       <%= pin.user.name if pin.user %>
       <% end %></p>
