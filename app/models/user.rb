@@ -13,6 +13,13 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true
 
+  PROFILE_FIELDS = %w[
+    description
+    title
+    skill_2d
+    skill_3d
+  ]
+
   LAB_OPTIONS = {
     "bristol" => "Bristol, UK",
     "suwa" => "Suwa, Japan",
@@ -56,6 +63,12 @@ class User < ActiveRecord::Base
       user_id: self.id,
       pin_id: pin.id
     ).any?
+  end
+
+  def complete_profile?
+    PROFILE_FIELDS.all? do |field|
+      send(field).present?
+    end
   end
 
 end
