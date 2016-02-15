@@ -42,3 +42,8 @@ img {
 .pagination a li.active {
   color: #000;
 }
+
+.parallax-container {
+      height: 300px;
+      z-index: 1;
+    }
