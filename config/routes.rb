@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   root "pins#index"
   get "about" => "pages#about" # creates about_path
   get "projects" => "pages#projects" # creates projects_path
+  get 'wayne' => 'pages#wayne' #creates wayne_path
 
   post "please_sign_in" => "pages#please_sign_in", :as => :please_sign_in
 
