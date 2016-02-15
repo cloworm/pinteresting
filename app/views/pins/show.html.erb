@@ -7,12 +7,16 @@
         <%= image_tag @pin.image.url(:large) %>
       </div>
 
-      <h5><%= @pin.description %></h5>
-      <p>By:
+      <h5><%= @pin.title %></h5>
+      <div class="divider"></div>
+      <h6><strong>Description:</strong></h6>
+      <%= @pin.description %>
+      <p><strong>By:</strong>
         <%= link_to @pin.user do %>
           <%= @pin.user.name if @pin.user %>
         <% end %>
       </p>
+      <div class="divider"></div>
 
       <%= render 'like_button', pin: @pin %>
 
