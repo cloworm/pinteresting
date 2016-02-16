@@ -25,18 +25,18 @@
             </ul>
           </li>
           <% if user_signed_in? %>
-            <li>
+            <li class="navbar-avatar-item">
               <a class="dropdown-button" href="#" data-activates="account">
                 <% if current_user.avatar.exists? %>
-                  <%= image_tag current_user.avatar.url(:tiny), class: "circle brand-logo" %>
+                  <%= image_tag current_user.avatar.url(:tiny), class: "circle navbar-avatar" %>
                 <% else %>
-                <i class="material-icons left">face</i> Account
+                  <i class="material-icons left">face</i> Account
                 <% end %>
               </a>
-                <ul id="account" class="dropdown-content">
-                  <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
-                  <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
-                </ul>
+              <ul id="account" class="dropdown-content">
+                <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+                <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+              </ul>
             </div>
             </li>
           <% else %>
@@ -68,7 +68,7 @@
                 </div>
               </li>
               <% if user_signed_in? %>
-                <li>
+                <li class="navbar-avatar-mobile">
                   <a class="collapsible-header">
                     <% if current_user.avatar.exists? %>
                       <%= image_tag current_user.avatar.url(:tiny), class: "circle left responsive-img" %> Account
