@@ -1,1 +1,1 @@
-$(".like-button-container[data-pin-id=\"<%= @pin.id %>\"]").html("<%= escape_javascript(render "like_button", pin: @pin) %>");
+$(".like-button-container[data-pin-id=\"<%= @pin.id %>\"]").replaceWith("<%= escape_javascript(render "like_button", pin: @pin) %>");
