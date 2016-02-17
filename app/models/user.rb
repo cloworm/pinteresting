@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :pins
   has_many :activities
   has_many :acquired_likes, -> { where type: "like" }, through: :pins, source: :activities
+  has_many :uploads
 
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "110x110>", tiny: "40x40>" }
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/

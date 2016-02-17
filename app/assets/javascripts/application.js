@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.turbolinks
+//= require jquery.remotipart
 //
 //= require masonry/jquery.masonry
 //= require masonry/jquery.imagesloaded.min

@@ -1,0 +1,11 @@
+<% uploads.each do |upload| %>
+  <div class="card-panel lime lighten-5">
+    <p><%= image_tag upload.attachment.url(:thumb) %></p>
+    <!-- todo pretty time -->
+    <p class="note">
+      Uploaded by
+      <%= link_to casual_user_name(upload.user), user_path(upload.user) %>
+      at <%= upload.created_at %>
+    </p>
+  </div>
+<% end %>

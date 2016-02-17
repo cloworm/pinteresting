@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     resources :activities, except: :show
     post "like"
     post "unlike"
+    # TODO: `resources :uploads do` instead of single route. This will support delete eventually.
+    post "add_attachment", :as => :add_attachment
   end
 
   resources :tags, only: :show
