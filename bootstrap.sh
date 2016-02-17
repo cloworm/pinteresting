@@ -4,7 +4,6 @@ function install {
     echo installing $1
     shift
     apt-get -y install "$@" >/dev/null 2>&1
-    install imagemagick
 }
 
 echo updating package information
@@ -31,6 +30,7 @@ install SQLite sqlite3 libsqlite3-dev
 install memcached memcached
 install Redis redis-server
 install RabbitMQ rabbitmq-server
+install imagemagick
 
 install PostgreSQL postgresql postgresql-contrib libpq-dev
 sudo -u postgres createuser --superuser vagrant
