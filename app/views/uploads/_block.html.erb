@@ -6,6 +6,9 @@
       Uploaded by
       <%= link_to casual_user_name(upload.user), user_path(upload.user) %>
       at <%= upload.created_at %>
+      <%= link_to pin_upload_path(@pin.id, upload), method: :delete, data: { confirm: 'Are you sure you want to delete attachment?' } do %>
+        <i class="material-icons tooltipped" data-position="top" data-delay="50" data-tooltip="Delete">clear</i>
+      <% end %>
     </p>
   </div>
 <% end %>

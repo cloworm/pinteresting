@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :pins do
     resources :activities, only: :create
-    resources :uploads, only: :delete
+    resources :uploads, only: :destroy
     post "like"
     post "unlike"
     post "add_attachment", :as => :add_attachment
