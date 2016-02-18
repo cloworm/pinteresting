@@ -22,7 +22,7 @@ class PinsController < ApplicationController
   def create
     @pin = current_user.pins.build(pin_params)
     if @pin.save
-      # save_attachments! # This is not used yet, but it could be if desired.
+      save_attachments!
       redirect_to @pin, notice: 'Pin was successfully created.'
     else
       render :new
@@ -31,6 +31,7 @@ class PinsController < ApplicationController
 
   def update
     if @pin.update(pin_params)
+      save_attachments!
       redirect_to @pin, notice: 'Pin was successfully updated.'
     else
       render :edit
@@ -75,14 +76,6 @@ class PinsController < ApplicationController
     end
   end
 
-  def add_attachment
-    save_attachments!
-
-    respond_to do |format|
-      format.js
-    end
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_pin
@@ -96,14 +89,14 @@ class PinsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pin_params
-      params.require(:pin).permit(:title, :description, :image, tag_list: [], attachments: []).tap do |params|
+      params.require(:pin).permit(:title, :description, :image, tag_list: []).tap do |params|
         params[:tag_list] &&= params[:tag_list].join(", ")
       end
     end
 
     def save_attachments!
       # TODO: prevent other users from uploading.
-      pin_params[:attachments].each do |attachment|
+      params[:attachments].each do |attachment|
         @pin.uploads.create(:attachment => attachment, :user => current_user)
       end
     end

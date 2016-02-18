@@ -4,7 +4,6 @@ Rails.application.routes.draw do
     resources :uploads, only: :destroy
     post "like"
     post "unlike"
-    post "add_attachment", :as => :add_attachment
   end
 
   resources :tags, only: :show

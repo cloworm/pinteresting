@@ -10,26 +10,6 @@
         <%= image_tag @pin.image.url(:large) %>
       </div>
 
-      <!-- Upload attachment form -->
-      <%= form_for @pin,
-            url: pin_add_attachment_path(@pin, format: "js"),
-            method: :post,
-            remote: true,
-            authenticity_token: true,
-            html: { multipart: true, class: "auto-submit" } do |f| %>
-        <div class="input-field file-field full-page-hover">
-          <div class="btn">
-            <span>Upload Attachments</span>
-            <%= file_field_tag "pin[attachments][]", type: :file, multiple: true %>
-          </div>
-          <div class="file-path-wrapper">
-            <input class="file-path validate" type="text">
-          </div>
-          <p class="input-field-note">Selected files will be automatically uploaded.</p>
-        </div>
-        <%= f.submit class: "fixed-offscreen", value: "Submit" %>
-      <% end %>
-
       <div class="pin-card-uploads" data-pin-id="<%= @pin.id %>">
         <%= render "uploads/block", :uploads => @pin.uploads.order("created_at DESC") %>
       </div>
@@ -61,14 +41,12 @@
         </div>
       <% end %>
 
-      <div class="row">
-        <div class="col s1 offset-s11">
-          <% if @pin.user == current_user %>
-            <%= link_to edit_pin_path(@pin) do %>
-              <i class="material-icons">create</i> Edit
-            <% end %>
+      <div class="pin-edit">
+        <% if @pin.user == current_user %>
+          <%= link_to edit_pin_path(@pin) do %>
+            <i class="material-icons">create</i> Edit
           <% end %>
-        </div>
+        <% end %>
       </div>
 
       <%= form_for [@pin, @pin.activities.build] do |f| %>

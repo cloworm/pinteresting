@@ -1,32 +1,39 @@
 <% uploads.each do |upload| %>
-  <div class="card-panel lime lighten-5">
-    <p>
-      <%= link_to upload.attachment.url do %>
-        <% if upload.image? %>
-          <%= image_tag upload.attachment.url(:thumb) %>
-        <% else %>
-          <i class="attachment-file-icon material-icons">insert_drive_file</i>
+  <div class="upload-block card-panel lime lighten-5">
+    <div class="row">
+      <div class="col s12 m3 l3">
+        <%= link_to upload.attachment.url do %>
+          <% if upload.image? %>
+            <%= image_tag upload.attachment.url(:thumb) %>
+          <% else %>
+            <i class="attachment-file-icon material-icons">insert_drive_file</i>
+          <% end %>
         <% end %>
-      <% end %>
-    </p>
-    <p>
-      <%= link_to upload.attachment.url do %>
-        <%= upload.attachment_file_name %>
-      <% end %>
-    </p>
-    <p>
-      <%= link_to upload.attachment.url do %>
-        <i class="material-icons">file_download</i> Download
-      <% end %>
-    </p>
-    <!-- todo pretty time -->
-    <p class="note">
-      Uploaded by
-      <%= link_to casual_user_name(upload.user), user_path(upload.user) %>
-      at <%= upload.created_at %>
-      <%= link_to pin_upload_path(@pin.id, upload), method: :delete, data: { confirm: 'Are you sure you want to delete attachment?' } do %>
-        <i class="material-icons tooltipped" data-position="top" data-delay="50" data-tooltip="Delete">clear</i>
-      <% end %>
-    </p>
+      </div>
+      <div class="col s12 m9 l9">
+        <p>
+          <%= link_to pin_upload_path(@pin.id, upload), method: :delete, data: { confirm: 'Are you sure you want to delete attachment?' } do %>
+            <i class="material-icons tooltipped upload-delete" data-position="top" data-delay="50" data-tooltip="Delete">clear</i>
+          <% end %>
+        </p>
+        <p class="truncate">
+          <%= link_to upload.attachment.url do %>
+            <%= upload.attachment_file_name %>
+          <% end %>
+        </p>
+
+        <p class="note">
+          Uploaded by
+          <%= link_to casual_user_name(upload.user), user_path(upload.user) %>
+          at <%= upload.created_at %>
+        </p>
+
+        <p>
+          <%= link_to upload.attachment.url do %>
+            <i class="material-icons">file_download</i> Download
+          <% end %>
+        </p>
+      </div>
+    </div>
   </div>
 <% end %>

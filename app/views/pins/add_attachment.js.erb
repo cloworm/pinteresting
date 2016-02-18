@@ -1,4 +1,0 @@
-// TODO: growl "X successful uploads"
-// TODO: scroll to the top of the uploads container to see the new uploads.
-// TODO: clear the file input.
-$(".pin-card-uploads[data-pin-id=\"<%= @pin.id %>\"]").html("<%= escape_javascript(render "uploads/block", :uploads => @pin.uploads.order("created_at DESC")) %>");
