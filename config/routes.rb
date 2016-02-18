@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :pins do
-    resources :activities, except: :show
+    resources :activities, only: :create
     post "like"
     post "unlike"
     # TODO: `resources :uploads do` instead of single route. This will support delete eventually.
