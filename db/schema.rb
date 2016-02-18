@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160215051616) do
+ActiveRecord::Schema.define(version: 20160217020600) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "body"
@@ -59,6 +59,17 @@ ActiveRecord::Schema.define(version: 20160215051616) do
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true
+
+  create_table "uploads", force: :cascade do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id",                 null: false
+    t.integer  "pin_id",                  null: false
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

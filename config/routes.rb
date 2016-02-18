@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :pins do
-    resources :activities, except: :show
+    resources :activities, only: :create
+    resources :uploads, only: :destroy
     post "like"
     post "unlike"
   end

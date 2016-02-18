@@ -1,6 +1,6 @@
 class PinsController < ApplicationController
   include PinsHelper
-  before_action :set_pin, only: [:show, :edit, :update, :destroy, :like, :unlike]
+  before_action :set_pin, only: [:show, :edit, :update, :destroy, :like, :unlike, :add_attachment]
   before_action :authenticate_user!, except: [:index, :show], unless: :admin_logged_in?
   before_action :correct_user, only: [:edit, :update, :destroy], unless: :admin_logged_in?
 
@@ -22,6 +22,7 @@ class PinsController < ApplicationController
   def create
     @pin = current_user.pins.build(pin_params)
     if @pin.save
+      save_attachments!
       redirect_to @pin, notice: 'Pin was successfully created.'
     else
       render :new
@@ -30,6 +31,7 @@ class PinsController < ApplicationController
 
   def update
     if @pin.update(pin_params)
+      save_attachments!
       redirect_to @pin, notice: 'Pin was successfully updated.'
     else
       render :edit
@@ -77,7 +79,7 @@ class PinsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_pin
-      @pin = Pin.find_by(id: params[:pin_id] || params[:id])
+      @pin = Pin.includes(:tags, :uploads => [:user]).find_by(id: params[:pin_id] || params[:id])
     end
 
     def correct_user
@@ -91,4 +93,12 @@ class PinsController < ApplicationController
         params[:tag_list] &&= params[:tag_list].join(", ")
       end
     end
+
+    def save_attachments!
+      # TODO: prevent other users from uploading.
+      params[:attachments].each do |attachment|
+        @pin.uploads.create(:attachment => attachment, :user => current_user)
+      end
+    end
+
 end

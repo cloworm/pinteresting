@@ -1,0 +1,13 @@
+.upload-block{
+  position:relative;
+
+  > .row {
+    margin-bottom: 0;
+  }
+}
+
+.upload-delete{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}

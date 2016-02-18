@@ -4,7 +4,14 @@
   <div class="card white pin-card-lg">
     <div class="card-content black-text">
       <div class="card-title">
+        <!-- TODO: make this a carousel with all the uploaded images? -->
+        <!--   If we do it, you'd probably want to be able to change the order of images -->
+        <!-- Alternatively, add the ability to promote one attachment to 'Card Banner' -->
         <%= image_tag @pin.image.url(:large) %>
+      </div>
+
+      <div class="pin-card-uploads" data-pin-id="<%= @pin.id %>">
+        <%= render "uploads/block", :uploads => @pin.uploads.order("created_at DESC") %>
       </div>
 
       <h5><%= @pin.title %></h5>
@@ -34,14 +41,12 @@
         </div>
       <% end %>
 
-      <div class="row">
-        <div class="col s1 offset-s11">
-          <% if @pin.user == current_user %>
-            <%= link_to edit_pin_path(@pin) do %>
-              <i class="material-icons">create</i> Edit
-            <% end %>
+      <div class="pin-edit">
+        <% if @pin.user == current_user %>
+          <%= link_to edit_pin_path(@pin) do %>
+            <i class="material-icons">create</i> Edit
           <% end %>
-        </div>
+        <% end %>
       </div>
 
       <%= form_for [@pin, @pin.activities.build] do |f| %>
