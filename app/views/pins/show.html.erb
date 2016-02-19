@@ -24,7 +24,7 @@
           </p>
 
           <h6><strong>INSTRUCTIONS</strong></h6>
-          <%= @pin.description %>
+          <%= simple_format(@pin.description) %>
 
           <% if @pin.tag_list.any? %>
             <div class="row">
