@@ -6,30 +6,32 @@ class PinsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show], unless: :admin_logged_in?
   before_action :correct_user, only: [:edit, :update, :destroy], unless: :admin_logged_in?
 
+  crumb(only: [:show, :new, :edit, :create, :update]) do
+    ["Projects", pins_path]
+  end
+
+  crumb(only: [:edit, :create, :update]) do
+    [@pin.title, pin_path(@pin)]
+  end
+
   def index
     @pins = Pin.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 30).includes(:activities)
   end
 
   def show
-    add_crumb("Projects", pins_path)
     add_crumb(@pin.title, pin_path(@pin))
   end
 
   def new
-    add_crumb("Projects", pins_path)
     add_crumb("New", pins_path)
     @pin = current_user.pins.build
   end
 
   def edit
-    add_crumb("Projects", pins_path)
-    add_crumb(@pin.title, pin_path(@pin))
     add_crumb("Edit", pins_path)
   end
 
   def create
-    add_crumb("Projects", pins_path)
-    add_crumb(@pin.title, pin_path(@pin))
     add_crumb("New", pins_path)
 
     @pin = current_user.pins.build(pin_params)
@@ -42,8 +44,6 @@ class PinsController < ApplicationController
   end
 
   def update
-    add_crumb("Projects", pins_path)
-    add_crumb(@pin.title, pin_path(@pin))
     add_crumb("Edit", pins_path)
 
     if @pin.update(pin_params)
