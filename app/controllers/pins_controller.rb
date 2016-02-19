@@ -96,6 +96,7 @@ class PinsController < ApplicationController
 
     def save_attachments!
       # TODO: prevent other users from uploading.
+      return unless params[:attachments]
       params[:attachments].each do |attachment|
         @pin.uploads.create(:attachment => attachment, :user => current_user)
       end
