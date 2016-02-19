@@ -1,17 +1,16 @@
 <div class="row">
-  <div class="col s12 m6 l4 offset-m3 offset-l4">
+  <div class="col s12 m8 l6 offset-m2 offset-l3">
     <div class="card white">
       <div class="card-content black-text">
         <span class="card-title">
           <h1>New Project</h1>
         </span>
-
-        <%= render 'form' %>
-
-        <div class="card-action">
-          <%= link_to 'Back', pins_path %>
-        </div>
       </div>
+      <% content_for :card_action do %>
+        <%= link_to 'Back', pins_path, class: "left btn white grey-text" %>
+      <% end %>
+
+      <%= render 'form' %>
     </div>
   </div>
 </div>
