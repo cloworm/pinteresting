@@ -19,20 +19,20 @@ class PinsController < ApplicationController
   end
 
   def show
-    add_crumb(@pin.title, pin_path(@pin))
+    crumb(@pin.title, pin_path(@pin))
   end
 
   def new
-    add_crumb("New", pins_path)
+    crumb("New", pins_path)
     @pin = current_user.pins.build
   end
 
   def edit
-    add_crumb("Edit", pins_path)
+    crumb("Edit", pins_path)
   end
 
   def create
-    add_crumb("New", pins_path)
+    crumb("New", pins_path)
 
     @pin = current_user.pins.build(pin_params)
     if @pin.save
@@ -44,7 +44,7 @@ class PinsController < ApplicationController
   end
 
   def update
-    add_crumb("Edit", pins_path)
+    crumb("Edit", pins_path)
 
     if @pin.update(pin_params)
       save_attachments!

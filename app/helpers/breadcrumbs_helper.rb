@@ -4,7 +4,7 @@ module BreadcrumbsHelper
     def crumb(before_action_options = {}, &title_uri_block)
       before_action(before_action_options) do
         title, uri = instance_eval(&title_uri_block)
-        add_crumb(title, uri)
+        crumb(title, uri)
       end
     end
   end
@@ -15,7 +15,7 @@ module BreadcrumbsHelper
 
   private
 
-  def add_crumb(title, uri)
+  def crumb(title, uri)
     crumbs.push([title, uri])
   end
 
