@@ -1,0 +1,16 @@
+.breadcrumbs-container {
+  height: $navbar-height;
+  line-height: $navbar-height;
+
+  .breadcrumb {
+    color: color("grey", "darken-2");
+
+    &:before {
+      color: color("grey", "base");
+    }
+  }
+
+  .breadcrumb:last-child {
+    color: black;
+  }
+}
