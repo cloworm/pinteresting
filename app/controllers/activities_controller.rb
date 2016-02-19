@@ -5,7 +5,7 @@ class ActivitiesController < ApplicationController
     if @activity.save
       redirect_to pin, notice: 'Comment was successfully posted.'
     else
-      #TODO: Handle invalidation
+      flash[:alert] = 'You have to type something before clicking submit.'
       render :template => "pins/show"
     end
   end

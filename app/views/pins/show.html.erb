@@ -14,29 +14,29 @@
         </div>
 
         <div class="col s12 m7 l7">
-          <h4><%= @pin.title.upcase %></h4>
-          <%= render 'like_button', pin: @pin %>
+          <div class="row">
+            <div class="col s12">
+              <h4><%= @pin.title.upcase %></h4>
+              <%= render 'pins/like_button', pin: @pin %>
 
-          <p><strong>By:</strong>
-            <%= link_to @pin.user do %>
-              <%= @pin.user.name if @pin.user %>
-            <% end %>
-          </p>
+              <p>By
+                <%= link_to @pin.user do %>
+                  <%= @pin.user.name if @pin.user %>
+                <% end %>
+              </p>
 
-          <h6><strong>INSTRUCTIONS</strong></h6>
-          <%= simple_format(@pin.description) %>
+              <h6><strong>INSTRUCTIONS</strong></h6>
+              <%= simple_format(@pin.description) %>
+            </div>
+          </div>
 
           <% if @pin.tag_list.any? %>
-            <div class="row">
-              <div class="col s12">
-                <div class="pin-tags">
-                  <% @pin.tag_list.each do |tag| %>
-                    <%= link_to tag_path(tag), :class => "chip pin-tag btn" do %>
-                      <%= tag %>
-                    <% end %>
-                  <% end %>
-                </div>
-              </div>
+            <div class="pin-tags">
+              <% @pin.tag_list.each do |tag| %>
+                <%= link_to tag_path(tag), :class => "chip pin-tag btn" do %>
+                  <%= tag %>
+                <% end %>
+              <% end %>
             </div>
           <% end %>
         </div>
@@ -61,7 +61,11 @@
               <%= f.submit class: "btn", value: "submit" %>
             </div>
           <% end %>
+        </div>
+      </div>
 
+      <div class="row">
+        <div class="col s12">
           <% @pin.activities.includes(:user).order("created_at DESC").each do |activity| %>
             <% if activity.comment? %>
               <p>
