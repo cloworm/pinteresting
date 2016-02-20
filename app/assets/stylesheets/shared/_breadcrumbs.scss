@@ -8,6 +8,10 @@
     &:before {
       color: color("grey", "base");
     }
+
+    .active-option {
+      font-weight:bold;
+    }
   }
 
   .breadcrumb:last-child {

@@ -170,6 +170,15 @@ To halt (shutdown):
 vagrant halt
 ```
 
+## Useful Tips
+
+### If you need to confirm your user's email address in development
+
+Run this command in the rails console (`$ rails c`) after creating the user:
+```terminal
+User.where(:confirmed_at => nil).update_all(:confirmed_at => Time.now.utc)
+```
+
 ## Want to contribute?
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) to learn how.

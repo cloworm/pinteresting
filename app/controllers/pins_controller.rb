@@ -1,6 +1,6 @@
 class PinsController < ApplicationController
+  include PinFilters
   include BreadcrumbsHelper
-  include PinsHelper
 
   before_action :set_pin, only: [:show, :edit, :update, :destroy, :like, :unlike, :add_attachment]
   before_action :authenticate_user!, except: [:index, :show], unless: :admin_logged_in?
@@ -14,12 +14,20 @@ class PinsController < ApplicationController
     [@pin.title, pin_path(@pin)]
   end
 
+  crumb(only: [:search]) do
+    ["\"#{params[:search]}\"", request.fullpath]
+  end
+
+  crumb(only: [:index, :search]) do
+    view_context.sort_by_link
+  end
+
   def index
-    @pins = Pin.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 30).includes(:activities)
+    @pins = Pin.all.paginate(:page => params[:page], :per_page => 30).includes(:activities)
+    @pins = apply_pin_filters(@pins)
   end
 
   def search
-    crumb(params[:search], request.fullpath)
     conditions = %w[pins.title pins.description tags.name users.name]
     conditions.map! { |column| "UPPER(#{column}) LIKE UPPER(?)" }
     values = conditions.map { "%#{params[:search]}%" }
