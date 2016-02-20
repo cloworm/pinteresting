@@ -19,11 +19,27 @@ class PinsController < ApplicationController
   end
 
   crumb(only: [:index, :search]) do
-    view_context.raw("Sort by: #{view_context.link_to "Most Recent", ""} | #{view_context.link_to "Most Liked", ""}")
+    most_recent = view_context.link_to "Most Recent", pins_path(:filter => { :sort_by => "most_recent" })
+    most_liked = view_context.link_to "Most Liked", pins_path(:filter => { :sort_by => "most_liked" })
+    view_context.raw("Sort by: #{most_recent} | #{most_liked}")
   end
 
   def index
-    @pins = Pin.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 30).includes(:activities)
+    @pins = Pin.all.paginate(:page => params[:page], :per_page => 30).includes(:activities)
+
+    if sort_by_most_liked?
+      subquery = Pin
+        .select("pins.id as pin_id, count(pins.id) as likes_count")
+        .joins("INNER JOIN activities ON activities.pin_id = pins.id AND activities.type = 'like'")
+        .group("pins.id")
+        .order("likes_count DESC")
+
+      @pins = @pins
+        .joins("LEFT OUTER JOIN (#{subquery.to_sql}) as subquery ON pins.id = subquery.pin_id")
+        .order("subquery.likes_count DESC")
+    else
+      @pins = @pins.order("created_at DESC")
+    end
   end
 
   def search
@@ -136,6 +152,22 @@ class PinsController < ApplicationController
       params[:attachments].each do |attachment|
         @pin.uploads.create(:attachment => attachment, :user => current_user)
       end
+    end
+
+    def filter_params
+      @filter_params ||= begin
+        p = if params[:filter]
+              params.require(:filter).permit(:sort_by)
+            else
+              {}
+            end
+        p[:sort_by] ||= "most_recent"
+        p
+      end
+    end
+
+    def sort_by_most_liked?
+      filter_params[:sort_by] == "most_liked"
     end
 
 end
