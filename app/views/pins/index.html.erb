@@ -9,10 +9,10 @@
   <% end %>
 
   <div id="pins" class="transitions-enabled">
-
     <% if user_signed_in? %>
       <%= render_new_pin_card %>
     <% end %>
+
     <% @pins.each do |pin| %>
       <%= render_pin_card(pin) %>
     <% end %>
