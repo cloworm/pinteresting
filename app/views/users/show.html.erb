@@ -65,6 +65,8 @@
     </div>
 
     <div class="col s12 m7 l8">
+      <%= sort_by_link %>
+
       <div class="profile-pins">
         <% @pins.each do |pin| %>
           <%= render_pin_card(pin, image_size: :large) %>

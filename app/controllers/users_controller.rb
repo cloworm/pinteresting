@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
+  include PinFilters
+
   def show
     @user = User.find(params[:id])
-    @pins = @user.pins.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 20).includes(:activities)
+    @pins = @user.pins.all.paginate(:page => params[:page], :per_page => 20).includes(:activities)
+    @pins = apply_pin_filters(@pins)
   end
 end

@@ -1,6 +1,6 @@
 class PinsController < ApplicationController
+  include PinFilters
   include BreadcrumbsHelper
-  include PinsHelper
 
   before_action :set_pin, only: [:show, :edit, :update, :destroy, :like, :unlike, :add_attachment]
   before_action :authenticate_user!, except: [:index, :show], unless: :admin_logged_in?
@@ -19,32 +19,12 @@ class PinsController < ApplicationController
   end
 
   crumb(only: [:index, :search]) do
-    if sort_by_most_liked?
-      most_recent = view_context.link_to "Most Recent", pins_path(:filter => { :sort_by => "most_recent" })
-      most_liked = view_context.link_to "Most Liked", pins_path(:filter => { :sort_by => "most_liked" }), class: "current-sorting"
-    else
-      most_recent = view_context.link_to "Most Recent", pins_path(:filter => { :sort_by => "most_recent" }), class: "current-sorting"
-      most_liked = view_context.link_to "Most Liked", pins_path(:filter => { :sort_by => "most_liked" })
-    end
-    view_context.raw("Sort by: #{most_recent} | #{most_liked}")
+    view_context.sort_by_link
   end
 
   def index
     @pins = Pin.all.paginate(:page => params[:page], :per_page => 30).includes(:activities)
-
-    if sort_by_most_liked?
-      subquery = Pin
-        .select("pins.id as pin_id, count(pins.id) as likes_count")
-        .joins("INNER JOIN activities ON activities.pin_id = pins.id AND activities.type = 'like'")
-        .group("pins.id")
-        .order("likes_count DESC")
-
-      @pins = @pins
-        .joins("LEFT OUTER JOIN (#{subquery.to_sql}) as subquery ON pins.id = subquery.pin_id")
-        .order("COALESCE(subquery.likes_count, 0) DESC")
-    else
-      @pins = @pins.order("created_at DESC")
-    end
+    @pins = apply_pin_filters(@pins)
   end
 
   def search
@@ -157,22 +137,6 @@ class PinsController < ApplicationController
       params[:attachments].each do |attachment|
         @pin.uploads.create(:attachment => attachment, :user => current_user)
       end
-    end
-
-    def filter_params
-      @filter_params ||= begin
-        p = if params[:filter]
-              params.require(:filter).permit(:sort_by)
-            else
-              {}
-            end
-        p[:sort_by] ||= "most_recent"
-        p
-      end
-    end
-
-    def sort_by_most_liked?
-      filter_params[:sort_by] == "most_liked"
     end
 
 end

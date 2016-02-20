@@ -8,13 +8,13 @@
     &:before {
       color: color("grey", "base");
     }
+
+    .active-option {
+      font-weight:bold;
+    }
   }
 
   .breadcrumb:last-child {
     color: black;
-  }
-
-  .current-sorting {
-    font-weight:bold;
   }
 }
