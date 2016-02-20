@@ -1,4 +1,6 @@
+<!-- TODO: place pages/home above breadcrumbs. Use `content_for`? -->
 <%= render 'pages/home' unless user_signed_in? %>
+
 <div class="container">
 
   <% if user_signed_in? %>
