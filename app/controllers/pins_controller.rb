@@ -1,25 +1,38 @@
 class PinsController < ApplicationController
+  include BreadcrumbsHelper
   include PinsHelper
+
   before_action :set_pin, only: [:show, :edit, :update, :destroy, :like, :unlike, :add_attachment]
   before_action :authenticate_user!, except: [:index, :show], unless: :admin_logged_in?
   before_action :correct_user, only: [:edit, :update, :destroy], unless: :admin_logged_in?
+
+  crumb(only: [:show, :new, :edit, :create, :update]) do
+    ["Projects", pins_path]
+  end
+
+  crumb(only: [:show, :edit, :create, :update]) do
+    [@pin.title, pin_path(@pin)]
+  end
 
   def index
     @pins = Pin.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 30).includes(:activities)
   end
 
   def show
-
   end
 
   def new
+    crumb("New", pins_path)
     @pin = current_user.pins.build
   end
 
   def edit
+    crumb("Edit", pins_path)
   end
 
   def create
+    crumb("New", pins_path)
+
     @pin = current_user.pins.build(pin_params)
     if @pin.save
       save_attachments!
@@ -30,6 +43,8 @@ class PinsController < ApplicationController
   end
 
   def update
+    crumb("Edit", pins_path)
+
     if @pin.update(pin_params)
       save_attachments!
       redirect_to @pin, notice: 'Pin was successfully updated.'
