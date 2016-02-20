@@ -29,7 +29,7 @@ class PinsController < ApplicationController
 
     if sort_by_most_liked?
       subquery = Pin
-        .select("pins.id as pin_id, count(pins.id) as likes_count")
+        .select("pins.id as pin_id, COALESCE(count(pins.id), 0) as likes_count")
         .joins("INNER JOIN activities ON activities.pin_id = pins.id AND activities.type = 'like'")
         .group("pins.id")
         .order("likes_count DESC")
