@@ -1,10 +1,9 @@
 <div class="row center">
   <div class="col s12 m6 l4 offset-m3 offset-l4">
     <div class="card white">
-      <div class="card-content black-text">
-        <span class="card-title black-text">Log in</span>
-
-          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="card-content black-text">
+          <span class="card-title black-text">Log in</span>
             <div class="input-field">
               <%= f.email_field :email, autofocus: true, class: "validate", placeholder: "E-mail" %>
             </div>
@@ -19,16 +18,12 @@
                 <%= f.label :remember_me, class: "black-text" %>
               </div>
             <% end -%>
-
-            <div class="actions">
-              <%= f.submit "Log in", class: "btn" %>
-            </div>
-          <% end %>
-
-        <div class="card-action">
-          <%= render "devise/shared/links" %>
+            <%= render "devise/shared/links" %>
         </div>
-      </div>
+        <div class="card-action clear-fix">
+          <%= f.submit class: "btn", value: "Log in" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
