@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "pins/search"
+
   resources :pins do
     resources :activities, only: :create
     resources :uploads, only: :destroy

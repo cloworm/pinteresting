@@ -70,3 +70,9 @@ img {
   bottom: 24px;
   right: 24px;
 }
+
+#search-modal {
+  > .modal-content {
+    padding: 0;
+  }
+}

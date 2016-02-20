@@ -20,6 +20,13 @@ var ready = function() {
   $('select').material_select();
 
   $('.parallax').parallax();
+
+  // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+  $('#search-modal-trigger').leanModal({
+    ready: function() {
+      $("#search").focus();
+    }
+  });
 };
 
 $(document).ready(ready);
