@@ -20,6 +20,7 @@
   <% flash.each do |name, msg| %>
     <%= content_tag(:div, msg, class: "alert alert-#{name} card-panel") %>
   <% end %>
+
   <% if flash.empty? && user_signed_in? && !current_user.complete_profile? && !current_page?(edit_user_registration_path) %>
     <%= content_tag(:div, class: "alert alert-nice card-panel") do %>
       <%= link_to edit_user_registration_path do %>
@@ -31,6 +32,7 @@
     <% end %>
   <% end %>
 
+  <%= render 'pages/home' if render_welcome_banner? %>
   <%= render 'layouts/breadcrumbs' %>
 
   <%= yield %>
