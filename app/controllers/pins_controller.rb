@@ -19,8 +19,13 @@ class PinsController < ApplicationController
   end
 
   crumb(only: [:index, :search]) do
-    most_recent = view_context.link_to "Most Recent", pins_path(:filter => { :sort_by => "most_recent" })
-    most_liked = view_context.link_to "Most Liked", pins_path(:filter => { :sort_by => "most_liked" })
+    if sort_by_most_liked?
+      most_recent = view_context.link_to "Most Recent", pins_path(:filter => { :sort_by => "most_recent" })
+      most_liked = view_context.link_to "Most Liked", pins_path(:filter => { :sort_by => "most_liked" }), class: "current-sorting"
+    else
+      most_recent = view_context.link_to "Most Recent", pins_path(:filter => { :sort_by => "most_recent" }), class: "current-sorting"
+      most_liked = view_context.link_to "Most Liked", pins_path(:filter => { :sort_by => "most_liked" })
+    end
     view_context.raw("Sort by: #{most_recent} | #{most_liked}")
   end
 
