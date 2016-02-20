@@ -1,0 +1,19 @@
+.comment-button-container {
+  display: inline-block;
+  position: relative;
+
+  .comment-button-inner {
+    position: relative;
+    display: inline-block;
+  }
+}
+
+.comments-count {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    margin-left: -0.3em;
+    margin-top: -0.9em;
+    font-weight: bold;
+    color: $card-link-color;
+  }
