@@ -1,5 +1,6 @@
 class TagsController < ApplicationController
   include BreadcrumbsHelper
+  include PinFilters
 
   before_action :set_tag, only: [:show]
 
@@ -11,8 +12,13 @@ class TagsController < ApplicationController
     [@tag.name, tag_path(@tag.name)]
   end
 
+  crumb(only: [:show]) do
+    view_context.sort_by_link
+  end
+
   def show
-    @pins = Pin.tagged_with(@tag.name).all.order("created_at DESC").paginate(:page => params[:page], :per_page => 30).includes(:activities)
+    @pins = Pin.tagged_with(@tag.name).all.paginate(:page => params[:page], :per_page => 30).includes(:activities)
+    @pins = apply_pin_filters(@pins)
   end
 
   private
