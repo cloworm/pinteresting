@@ -10,7 +10,7 @@ class PinsController < ApplicationController
     ["Projects", pins_path]
   end
 
-  crumb(only: [:show, :edit, :create, :update]) do
+  crumb(only: [:show, :edit, :update]) do
     [@pin.title, pin_path(@pin)]
   end
 
