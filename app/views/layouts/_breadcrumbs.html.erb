@@ -2,7 +2,11 @@
   <div class="container breadcrumbs-container">
     <div class="col s12">
       <% crumbs.each do |(title, uri)| %>
-        <%= link_to title, uri, class: "breadcrumb" %>
+        <% if uri %>
+          <%= link_to title, uri, class: "breadcrumb" %>
+        <% else %>
+          <span class="breadcrumb"><%= title %></span>
+        <% end %>
       <% end %>
     </div>
   </div>

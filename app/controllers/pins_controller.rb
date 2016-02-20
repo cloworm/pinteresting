@@ -14,12 +14,19 @@ class PinsController < ApplicationController
     [@pin.title, pin_path(@pin)]
   end
 
+  crumb(only: [:search]) do
+    ["\"#{params[:search]}\"", request.fullpath]
+  end
+
+  crumb(only: [:index, :search]) do
+    view_context.raw("Sort by: #{view_context.link_to "Most Recent", ""} | #{view_context.link_to "Most Liked", ""}")
+  end
+
   def index
     @pins = Pin.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 30).includes(:activities)
   end
 
   def search
-    crumb(params[:search], request.fullpath)
     conditions = %w[pins.title pins.description tags.name users.name]
     conditions.map! { |column| "UPPER(#{column}) LIKE UPPER(?)" }
     values = conditions.map { "%#{params[:search]}%" }
