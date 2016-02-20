@@ -64,6 +64,9 @@ update-locale LANG=en_US.UTF-8 LANGUAGE=en_US.UTF-8 LC_ALL=en_US.UTF-8
 echo installing Rails
 gem install rails
 
+echo installing gems with bundler
+bundle install
+
 echo removing unnecessary packages
 yes | apt-get autoremove
 

@@ -1,10 +1,13 @@
-# One Month Rails
+# Saint-Gobain Fab Lab Hub
 
-This is the pinteresting sample application for [*One Month Rails*](http://onemonthrails.com)
+Where makers from our network of Fab Labs can share their projects.
 
 by Chloe Echikson
 
-#### Set-Up Instructions For Windows:
+## Set-up for Development environment.
+
+### Installing required software:
+
 1) Download and Install [Vagrant](http://www.vagrantup.com/downloads.html)
 
 2) Download and Install [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
@@ -13,23 +16,78 @@ by Chloe Echikson
 
 4) Ensure git CLI on host machine
 
-5) Download and Install [PuTTy](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) [putty.exe](http://the.earth.li/~sgtatham/putty/latest/x86/putty.exe)
+5) If you are on Windows, see the [Set-Up Instructions For Windows](#set-up-instructions-for-windows) section below, then return here.
 
-6) Download and Install [PuTTYgen](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) [puttygen.exe](http://the.earth.li/~sgtatham/putty/latest/x86/puttygen.exe)
 
--------------
+### Set-up and run this app:
 
-#### Git Clone the repo where ever you'd like the machine
+#### Git Clone the repo wherever you'd like it.
+
 ```terminal
 $ git clone https://github.com/cloworm/pinteresting.git
 $ cd pinteresting
 ```
-#### Start Vagrant
 
-To Start up your VM in cmd or powershell
+#### Access your Vagrant box.
+
+Start up your Vagrant VM (provisioning may take a while the first time you `up`)
 ```terminal
 $ vagrant up
 ```
+
+Log into your Vagrant VM (via ssh)
+
+1) ssh into your Vagrant VM (see windows instructions if you are on Windows)
+```terminal
+$ vagrant ssh
+```
+
+You should notice your command prompt has changed to something like this:
+```terminal
+vagrant@pinteresting:~$
+```
+
+#### Enter the project directory
+
+2) Change directory into the shared project folder (shared meaning the files are shared between your Vagrant and your Host machine)
+```terminal
+$ cd pinteresting
+```
+
+#### Install gems.
+
+3) Make sure all the required gems are installed:
+```terminal
+$ bundle install
+```
+
+#### Set up database.
+
+4) Make sure the database is migrated to latest:
+```terminal
+$ rake db:migrate
+```
+
+5) Seed your database with some required values:
+```terminal
+$ rake db:seed
+```
+
+#### Run the app!
+
+6) Start your rails server (specifying IP 0.0.0.0 so it works from Vagrant)
+```terminal
+$ rails s -b 0.0.0.0
+```
+
+7) Visit `localhost:3000` in your favorite web browser!
+
+### Set-Up Instructions For Windows:
+
+5) Download and Install [PuTTy](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) [putty.exe](http://the.earth.li/~sgtatham/putty/latest/x86/putty.exe)
+
+6) Download and Install [PuTTYgen](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) [puttygen.exe](http://the.earth.li/~sgtatham/putty/latest/x86/puttygen.exe)
+
 #### 1) Generate SSH Keys With PuTTyGen (You only do this once)
 
 * Open puttygen.exe
@@ -88,28 +146,30 @@ putty setup. You will only need to open the putty.exe file and
 double click "vagrant" in the saved sessions list after running
 "vagrant up" in cmd or powershell.
 
-
 Navigate to synced folders directory:
 ```terminal
 $ cd /vagrant
 ```
 
-#### Stop Vagrant
+## Common Vagrant commands.
 
-To suspend:
+For a full list of commands type:
+```terminal
+vagrant -h
+```
+
+### Stop Vagrant
+
+To suspend (sleep):
 ```terminal
 vagrant suspend
 ```
-To halt:
+
+To halt (shutdown):
 ```terminal
 vagrant halt
 ```
 
-# Rails from Vagrant
+## Want to contribute?
 
-As of Rails 4.2 you must specify the IP of 0.0.0.0 to be able to connect to your server
-running in your vagrant box.
-
-```
-rails s -b 0.0.0.0
-```
+See [CONTRIBUTING.md](CONTRIBUTING.md) to learn how.

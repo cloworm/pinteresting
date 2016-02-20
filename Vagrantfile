@@ -2,11 +2,11 @@
 # vi: set ft=ruby :
 Vagrant.configure('2') do |config|
   config.vm.box      = 'ubuntu/trusty64'
-  config.vm.hostname = 'danny-rails-middleman'
-  config.vm.synced_folder ".", "/home/vagrant/pinteresting", 
-  owner: "vagrant",
-  group: "www-data",
-  mount_options: ["dmode=775,fmode=664"]
+  config.vm.hostname = 'pinteresting'
+  config.vm.synced_folder ".", "/home/vagrant/pinteresting",
+    owner: "vagrant",
+    group: "www-data",
+    mount_options: ["dmode=775,fmode=664"]
 
   config.vm.network :forwarded_port, guest: 3000, host: 3000
 
