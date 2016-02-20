@@ -1,8 +1,10 @@
 class TagsController < ApplicationController
+  include WelcomeBannerHelper
   include BreadcrumbsHelper
   include PinFilters
 
   before_action :set_tag, only: [:show]
+  before_action :include_welcome_banner_in_layout!, only: [:show]
 
   crumb(only: [:show]) do
     ["Projects", pins_path]
