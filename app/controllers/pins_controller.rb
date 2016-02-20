@@ -6,7 +6,7 @@ class PinsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show], unless: :admin_logged_in?
   before_action :correct_user, only: [:edit, :update, :destroy], unless: :admin_logged_in?
 
-  crumb(only: [:show, :new, :edit, :create, :update]) do
+  crumb(only: [:search, :show, :new, :edit, :create, :update]) do
     ["Projects", pins_path]
   end
 
@@ -16,6 +16,20 @@ class PinsController < ApplicationController
 
   def index
     @pins = Pin.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 30).includes(:activities)
+  end
+
+  def search
+    crumb(params[:search], request.fullpath)
+    conditions = %w[pins.title pins.description tags.name users.name]
+    conditions.map! { |column| "UPPER(#{column}) LIKE UPPER(?)" }
+    values = conditions.map { "%#{params[:search]}%" }
+
+    @pins = Pin.all.uniq
+      .order("pins.created_at DESC")
+      .paginate(:page => params[:page], :per_page => 30)
+      .includes(:activities, :user, :tags)
+      .joins(:user, :tags)
+      .where(conditions.join(" OR "), *values)
   end
 
   def show

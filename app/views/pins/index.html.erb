@@ -1,11 +1,13 @@
 <%= render 'pages/home' unless user_signed_in? %>
 <div class="container">
 
-  <div class="fixed-action-btn">
-    <%= link_to new_pin_path, class: "btn-floating btn-large red" do %>
-      <i class="large material-icons">add_a_photo</i>
-    <% end %>
-  </div>
+  <% if user_signed_in? %>
+    <div class="fixed-action-btn">
+      <%= link_to new_pin_path, class: "btn-floating btn-large red" do %>
+        <i class="large material-icons">add_a_photo</i>
+      <% end %>
+    </div>
+  <% end %>
 
   <div id="pins" class="transitions-enabled">
 

@@ -54,11 +54,6 @@
             <i class="material-icons left">home</i> Home
           <% end %>
         </li>
-<!--           <li>
-          <%= link_to about_path, class: "collapsible-header" do %>
-            <i class="material-icons left">info</i> About
-          <% end %>
-        </li> -->
         <li class="no-padding">
           <ul class="collapsible collapsible-accordion">
             <li>
@@ -103,9 +98,9 @@
   <div class="modal-content">
     <nav>
       <div class="nav-wrapper">
-        <form>
+        <form action="<%= pins_search_path %>">
           <div class="input-field">
-            <input id="search" type="search" required>
+            <input id="search" name="search" type="search" required>
             <label for="search"><i class="material-icons">search</i></label>
             <i class="material-icons">close</i>
           </div>
