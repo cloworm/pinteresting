@@ -1,6 +1,6 @@
-# One Month Rails
+# Saint-Gobain Fab Lab Hub
 
-This is the pinteresting sample application for [*One Month Rails*](http://onemonthrails.com)
+Where makers from our network of Fab Labs can share their projects.
 
 by Chloe Echikson
 
