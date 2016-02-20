@@ -8,15 +8,15 @@ by Chloe Echikson
 
 ### Installing required software:
 
-1) Download and Install [Vagrant](http://www.vagrantup.com/downloads.html)
+ 1. Download and Install [Vagrant](http://www.vagrantup.com/downloads.html)
 
-2) Download and Install [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
+ 2. Download and Install [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
 
-3) Download and open/install the appropriate [VM Virtualbox Extension Pack](https://www.virtualbox.org/wiki/Downloads)
+ 3. Download and open/install the appropriate [VM Virtualbox Extension Pack](https://www.virtualbox.org/wiki/Downloads)
 
-4) Ensure git CLI on host machine
+ 4. Ensure git CLI on host machine
 
-5) If you are on Windows, see the [Set-Up Instructions For Windows](#Set-Up+Instructions+For+Windows) section below, then return here.
+ 5. If you are on Windows, see the [Set-Up Instructions For Windows](#Set-Up+Instructions+For+Windows) section below, then return here.
 
 -------------
 
@@ -38,7 +38,7 @@ $ vagrant up
 
 Log into your Vagrant VM (via ssh)
 
-1) ssh into your Vagrant VM (see windows instructions if you are on Windows)
+ 1. ssh into your Vagrant VM (see windows instructions if you are on Windows)
 ```terminal
 $ vagrant ssh
 ```
@@ -48,32 +48,32 @@ You should notice your command prompt has changed to something like this:
 vagrant@pinteresting:~$
 ```
 
-2) Change directory into the shared project folder (shared meaning the files are shared between your Vagrant and your Host machine)
+ 2. Change directory into the shared project folder (shared meaning the files are shared between your Vagrant and your Host machine)
 ```terminal
 $ cd pinteresting
 ```
 
-3) Make sure all the required gems are installed:
+ 3. Make sure all the required gems are installed:
 ```terminal
 $ bundle install
 ```
 
-4) Make sure the database is migrated to latest:
+ 4. Make sure the database is migrated to latest:
 ```terminal
 $ rake db:migrate
 ```
 
-5) Seed your database with some required values:
+ 5. Seed your database with some required values:
 ```terminal
 $ rake db:seed
 ```
 
-6) Start your rails server (specifying IP 0.0.0.0 so it works from Vagrant)
+ 6. Start your rails server (specifying IP 0.0.0.0 so it works from Vagrant)
 ```terminal
 $ rails s -b 0.0.0.0
 ```
 
-7) Visit `localhost:3000` in your favorite web browser!
+ 7. Visit `localhost:3000` in your favorite web browser!
 
 
 ### Set-Up Instructions For Windows:
