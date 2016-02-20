@@ -16,7 +16,6 @@
 <body>
 
   <%= render 'layouts/header' %>
-  <%= render 'layouts/breadcrumbs' %>
 
   <% flash.each do |name, msg| %>
     <%= content_tag(:div, msg, class: "alert alert-#{name} card-panel") %>
@@ -32,6 +31,8 @@
     <% end %>
   <% end %>
   <%= yield %>
+
+  <%= render 'layouts/breadcrumbs' %>
 
 </body>
 </html>

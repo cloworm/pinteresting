@@ -27,8 +27,8 @@ class PinsController < ApplicationController
     @pins = Pin.all.uniq
       .order("pins.created_at DESC")
       .paginate(:page => params[:page], :per_page => 30)
-      .includes(:activities, :user, :tags)
-      .joins(:user, :tags)
+      .includes(:activities)
+      .eager_load(:user, :tags)
       .where(conditions.join(" OR "), *values)
   end
 
