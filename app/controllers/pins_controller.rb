@@ -1,9 +1,11 @@
 class PinsController < ApplicationController
+  include WelcomeBannerHelper
   include PinFilters
   include BreadcrumbsHelper
 
   before_action :set_pin, only: [:show, :edit, :update, :destroy, :like, :unlike, :add_attachment]
   before_action :authenticate_user!, except: [:index, :show], unless: :admin_logged_in?
+  before_action :authenticate_user!, except: [:index, :show, :search], unless: :admin_logged_in?
   before_action :correct_user, only: [:edit, :update, :destroy], unless: :admin_logged_in?
 
   crumb(only: [:search, :show, :new, :edit, :create, :update]) do
