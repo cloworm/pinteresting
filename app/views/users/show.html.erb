@@ -65,7 +65,11 @@
     </div>
 
     <div class="col s12 m7 l8">
-      <%= sort_by_link %>
+      <div class="breadcrumbs-container">
+        <div class="col s12">
+          <span class="breadcrumb"><%= sort_by_link %></span>
+        </div>
+      </div>
 
       <div class="profile-pins">
         <% @pins.each do |pin| %>
