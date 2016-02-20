@@ -16,7 +16,7 @@ by Chloe Echikson
 
 4) Ensure git CLI on host machine
 
-5) If you are on Windows, see the [Set-Up Instructions For Windows](#Set-Up+Instructions+For+Windows) section below, then return here.
+5) If you are on Windows, see the [Set-Up Instructions For Windows](#set-up-instructions-for-windows) section below, then return here.
 
 
 ### Set-up and run this app:
@@ -170,6 +170,6 @@ To halt (shutdown):
 vagrant halt
 ```
 
+## Want to contribute?
 
-
-
+See [CONTRIBUTING.md](CONTRIBUTING.md) to learn how.
