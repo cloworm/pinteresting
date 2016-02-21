@@ -66,6 +66,50 @@ img {
   padding: $padding;
 }
 
+#mobile-side-nav {
+  .logo {
+    text-align: center;
+    margin-top: $sidenav-item-height / 2;
+    margin-bottom: $sidenav-item-height / 2;
+  }
+
+  .logo-container {
+    margin-bottom: $sidenav-item-height / 2;
+  }
+
+  #front-page-logo {
+    display: inline-block;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .search {
+    margin: 0 12px;
+    transition: margin .25s ease;
+
+    .input-field {
+      label i.material-icons {
+        color: color("grey", "lighten-1")
+      }
+
+      #mobile-side-nav-search {
+        height: $sidenav-item-height;
+        line-height: $sidenav-item-height;
+      }
+    }
+
+    &.focused {
+      margin-left: 0;
+      margin-right: 0;
+
+      i.clear-button {
+        color: color("grey", "lighten-1")
+      }
+
+    }
+  }
+}
+
 .fixed-action-btn {
   bottom: 24px;
   right: 24px;

@@ -19,7 +19,7 @@ module PinFilterHelper
     most_recent = link_to "Most Recent", url_for(most_recent_url_options), class: most_recent_class
     most_liked = link_to "Most Liked",  url_for(most_liked_url_options), class: most_liked_class
 
-    raw("Sort by: #{most_recent} | #{most_liked}")
+    raw("#{most_recent} | #{most_liked}")
   end
 
 end

@@ -1,9 +1,9 @@
 .breadcrumbs-container {
-  height: $navbar-height;
   line-height: $navbar-height;
 
   .breadcrumb {
     color: color("grey", "darken-2");
+    white-space: nowrap;
 
     &:before {
       color: color("grey", "base");
