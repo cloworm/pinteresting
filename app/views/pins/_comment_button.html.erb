@@ -1,10 +1,8 @@
 <div class="comment-button-container" data-pin-id="<%= pin.id %>">
   <div class="comment-button-inner">
-    <% if user_signed_in? %>
-      <%= link_to pin_path(pin) do %>
-        <h7 class="comments-count"><%= pin.activities.where(:type => "comment").count %></h7>
-        <i class="material-icons tooltipped" data-position="top" data-delay="50" data-tooltip="Comments">chat_bubble_outline</i>
-      <% end %>
+    <%= link_to pin_path(pin) do %>
+      <h7 class="comments-count"><%= pin.comments_count %></h7>
+      <i class="material-icons tooltipped" data-position="top" data-delay="50" data-tooltip="Comments">chat_bubble_outline</i>
     <% end %>
   </div>
 </div>
