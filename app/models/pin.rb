@@ -19,4 +19,8 @@ class Pin < ActiveRecord::Base
     @likes_count ||= activities.select { |a| a.like? }.count
   end
 
+  def comments_count
+    @comments_count ||= activities.reject { |a| a.like? }.count
+  end
+
 end
