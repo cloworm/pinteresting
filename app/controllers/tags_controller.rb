@@ -4,7 +4,7 @@ class TagsController < ApplicationController
   include PinFilters
 
   before_action :set_tag, only: [:show]
-  before_action :include_welcome_banner_in_layout!, only: [:show]
+  before_action :include_welcome_banner_in_layout!, only: [:show], unless: :user_signed_in?
 
   crumb(only: [:show]) do
     ["Projects", pins_path]
