@@ -3,5 +3,8 @@
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-ga('create', window.googleAnalyticsTrackingID, 'auto');
-ga('send', 'pageview');
+var gaDomain = window.railsEnv == "development" ? "none" : "auto"
+ga('create', window.googleAnalyticsTrackingID, gaDomain);
+
+// We send the pageview from layout instead of here so turbolinks hits it.
+// ga('send', 'pageview');
