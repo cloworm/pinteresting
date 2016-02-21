@@ -7,7 +7,7 @@ module PinFilterHelper
     most_recent = link_to "Most Recent", url_for({ :filter => { :sort_by => "most_recent" } }.merge(options)), class: most_recent_class
     most_liked = link_to "Most Liked", url_for({ :filter => { :sort_by => "most_liked" } }.merge(options)), class: most_liked_class
 
-    raw("Sort by: #{most_recent} | #{most_liked}")
+    raw("#{most_recent} | #{most_liked}")
   end
 
 end
