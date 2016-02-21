@@ -2,7 +2,9 @@
 <html>
 <head>
   <title>The Fab Lab Hub @ Saint-Gobain</title>
-  <script>window.googleAnalyticsTrackingID = "<%= ENV["GOOGLE_ANALYTICS_TRACKING_ID"] %>";</script>
+  <script>
+    <%= render 'layouts/window_variables' %>
+  </script>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -37,6 +39,8 @@
   <%= render 'layouts/breadcrumbs' %>
 
   <%= yield %>
+
+  <script>ga('send', 'pageview', window.location.pathname);</script>
 
 </body>
 </html>

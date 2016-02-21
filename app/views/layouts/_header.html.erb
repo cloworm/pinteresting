@@ -20,10 +20,8 @@
           <a class="dropdown-button" href="#" data-activates="fablabs"><!-- <i class="material-icons left">public</i> --> Fab Labs</a>
           <!-- Dropdown Structure -->
           <ul id="fablabs" class="dropdown-content">
-            <li><a href="#!">Bristol</a></li>
-            <li><a href="#!">Suwa</a></li>
             <li><%= link_to wayne_path do %>Wayne<% end %></li>
-            <li><a href="#!">Willich</a></li>
+            <li><a>More coming soon!</a></li>
           </ul>
         </li>
         <% if user_signed_in? %>
@@ -72,10 +70,8 @@
               <a class="collapsible-header"><i class="material-icons left">public</i> Fab Labs</a>
               <div class="collapsible-body">
                 <ul>
-                  <li><a href="#!">Bristol</a></li>
-                  <li><a href="#!">Suwa</a></li>
-                  <li><a href="#!">Wayne</a></li>
                   <li><%= link_to wayne_path do %>Wayne<% end %></li>
+                  <li><a>More coming soon!</a></li>
                 </ul>
               </div>
             </li>
