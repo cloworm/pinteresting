@@ -7,11 +7,16 @@
     </div>
   <% end %>
 
-  <div id="pins" class="transitions-enabled">
-    <% @pins.each do |pin| %>
-      <%= render_pin_card(pin) %>
-    <% end %>
-  </div>
+  <!-- TODO: Make the no results thing more reusable? -->
+  <% if @pins.empty? %>
+    <h4>No results.</h4>
+  <% else %>
+    <div id="pins" class="transitions-enabled">
+      <% @pins.each do |pin| %>
+        <%= render_pin_card(pin) %>
+      <% end %>
+    </div>
+  <% end %>
 
   <div class="center">
     <%= will_paginate @pins %>
