@@ -6,6 +6,12 @@
 
       <ul class="right hide-on-med-and-down">
         <li>
+          <!-- Modal Trigger -->
+          <a id="search-modal-trigger" class="modal-trigger" href="#search-modal">
+            <i class="material-icons">search</i>
+          </a>
+        </li>
+        <li>
           <%= link_to root_path do %>
             Home
           <% end %>
@@ -40,16 +46,22 @@
         <% end %>
       </ul>
 
-      <ul class="right">
-        <li>
-          <!-- Modal Trigger -->
-          <a id="search-modal-trigger" class="modal-trigger" href="#search-modal">
-            <i class="material-icons">search</i>
-          </a>
-        </li>
-      </ul>
-
       <ul class="side-nav" id="mobile-side-nav">
+        <li class="logo">
+          <%= link_to root_path, class: "logo-container" do %>
+            <img id="front-page-logo" src="/images/logo.png" />
+          <% end %>
+        </li>
+        <li class="search card">
+          <form action="<%= pins_search_path %>">
+            <div class="input-field clearable-input-field">
+              <input id="mobile-side-nav-search" name="search" type="search" required>
+              <label for="mobile-side-nav-search"><i class="material-icons">search</i></label>
+              <!-- TODO: have this button clear text field input -->
+              <i class="material-icons clear-button">close</i>
+            </div>
+          </form>
+        </li>
         <li>
           <%= link_to root_path, class: "collapsible-header" do %>
             <i class="material-icons left">home</i> Home
@@ -79,6 +91,7 @@
                 </a>
                 <div class="collapsible-body">
                   <ul>
+                    <li><%= link_to "View Profile", user_path(current_user) %></li>
                     <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
                     <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
                   </ul>
@@ -100,10 +113,11 @@
     <nav>
       <div class="nav-wrapper">
         <form action="<%= pins_search_path %>">
-          <div class="input-field">
+          <div class="input-field clearable-input-field">
             <input id="search" name="search" type="search" required>
             <label for="search"><i class="material-icons">search</i></label>
-            <i class="material-icons">close</i>
+            <!-- TODO: have this button clear text field input -->
+            <i class="material-icons clear-button">close</i>
           </div>
         </form>
       </div>
